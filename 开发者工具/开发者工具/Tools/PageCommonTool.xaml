@@ -1,0 +1,27 @@
+﻿<Page x:Class="开发者工具.Tools.PageCommonTool"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:开发者工具.Tools"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="常用工具">
+
+    <Grid>
+        <TabControl HorizontalAlignment="Left">
+            <TabItem Header="json格式化">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="txtJsonOld" HorizontalAlignment="Left" Height="105" Margin="10,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="17"/>
+                    <TextBox x:Name="txtJsonNew" HorizontalAlignment="Left" Height="105" Margin="92,61,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="15"/>
+                    <Button x:Name="btnJsonFormat" Content="格式化 &gt;" HorizontalAlignment="Left" Margin="37,10,0,0" VerticalAlignment="Top" Width="75" Click="btnJsonFormat_Click"/>
+                    <Button x:Name="btnJsonCopy" Content="复制结果" HorizontalAlignment="Left" Margin="37,191,0,0" VerticalAlignment="Top" Width="75" Click="btnJsonCopy_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Page>

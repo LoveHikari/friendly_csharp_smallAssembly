@@ -1,0 +1,43 @@
+﻿<Page x:Class="开发者工具.Tools.PageEncrypt"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:开发者工具.Tools"
+      mc:Ignorable="d" 
+      d:DesignHeight="300"
+      Title="加密解密" Width="575">
+
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Width="515">
+            <TabItem Header="MD5">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="txtSourceMd5" HorizontalAlignment="Left" Height="215" Margin="22,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+                    <TextBox x:Name="txtDestMd5" HorizontalAlignment="Left" Height="215" Margin="302,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
+                    <RadioButton x:Name="rb16" Content="16位" HorizontalAlignment="Left" Margin="204,77,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <RadioButton x:Name="rb32" Content="32位" HorizontalAlignment="Left" Margin="204,107,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="cbMD5Encoding" HorizontalAlignment="Left" Margin="204,137,0,0" VerticalAlignment="Top" Width="75" SelectedIndex="0">
+                        <TextBlock Text="ASCII"/>
+                        <TextBlock Text="UTF-8"/>
+                        <TextBlock Text="Unicode"/>
+                    </ComboBox>
+                    <Button x:Name="btnMd5" Content="MD5 &gt;" HorizontalAlignment="Left" Margin="204,167,0,0" VerticalAlignment="Top" Width="75" Click="btnMd5_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Base64">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="txtSourceBase64" HorizontalAlignment="Left" Height="215" Margin="22,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160"/>
+                    <TextBox x:Name="txtDestBase64" HorizontalAlignment="Left" Height="215" Margin="302,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
+                    <ComboBox x:Name="cbBase64Encoding" HorizontalAlignment="Left" Margin="208,88,0,0" VerticalAlignment="Top" Width="75" SelectedIndex="0">
+                        <TextBlock Text="ASCII"/>
+                        <TextBlock Text="UTF-8"/>
+                        <TextBlock Text="Unicode"/>
+                    </ComboBox>
+                    <Button x:Name="btnBase64Encode" Content="加密 &gt;" HorizontalAlignment="Left" Margin="208,125,0,0" VerticalAlignment="Top" Width="75" Click="btnBase64Encode_Click"/>
+                    <Button x:Name="btnBase64Decode" Content="&lt; 解密" HorizontalAlignment="Left" Margin="208,163,0,0" VerticalAlignment="Top" Width="75" Click="btnBase64Decode_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Page>

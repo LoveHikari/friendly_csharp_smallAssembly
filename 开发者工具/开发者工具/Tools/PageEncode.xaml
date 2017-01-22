@@ -1,0 +1,45 @@
+﻿<Page x:Class="开发者工具.Tools.PageEncode"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:开发者工具.Tools"
+      mc:Ignorable="d" 
+      d:DesignHeight="300"
+      Title="编码解码" Width="575">
+
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Width="525">
+            <TabItem Header="UrlEncode">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="txtSourceUrl" HorizontalAlignment="Left" Height="200" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtDestUrl" HorizontalAlignment="Left" Height="205" Margin="307,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+                    <Button x:Name="btnUrlEncode" Content="编码 &gt;" HorizontalAlignment="Left" Margin="196,94,0,0" VerticalAlignment="Top" Width="75" Click="btnUrlEncode_Click"/>
+                    <Button x:Name="btnUrlDecode" Content="&lt; 解码" HorizontalAlignment="Left" Margin="196,152,0,0" VerticalAlignment="Top" Width="75" Click="btnUrlDecode_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="HtmlEncode">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="txtSourceHtml" HorizontalAlignment="Left" Height="200" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtDestHtml" HorizontalAlignment="Left" Height="205" Margin="307,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+                    <Button x:Name="btnHtmlEncode" Content="编码 &gt;" HorizontalAlignment="Left" Margin="196,94,0,0" VerticalAlignment="Top" Width="75" Click="btnHtmlEncode_Click"/>
+                    <Button x:Name="btnHtmlDecode" Content="&lt; 解码" HorizontalAlignment="Left" Margin="196,152,0,0" VerticalAlignment="Top" Width="75" Click="btnHtmlDecode_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Unicode">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="txtSourceUnicode" HorizontalAlignment="Left" Height="200" Margin="10,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+                    <TextBox x:Name="txtDestUnicode" HorizontalAlignment="Left" Height="205" Margin="307,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170"/>
+                    <ComboBox x:Name="cbUnicode" HorizontalAlignment="Left" Margin="201,113,0,0" VerticalAlignment="Top" Width="75" SelectedIndex="0">
+                        <TextBlock Text="ASCII"></TextBlock>
+                        <TextBlock Text="UTF-8"></TextBlock>
+                        <TextBlock Text="Unicode"></TextBlock>
+                    </ComboBox>
+                    <Button x:Name="btnUnicodeEncode" Content="编码 &gt;" HorizontalAlignment="Left" Margin="201,79,0,0" VerticalAlignment="Top" Width="75" Click="btnUnicodeEncode_Click"/>
+                    <Button x:Name="btnUnicodeDecode" Content="&lt; 解码" HorizontalAlignment="Left" Margin="201,151,0,0" VerticalAlignment="Top" Width="75" Click="btnUnicodeDecode_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Page>
