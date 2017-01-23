@@ -29,8 +29,19 @@ namespace Common.DBHelper
         public CrDB()
         {
             IniHelper ini = new IniHelper(System.IO.Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "config.ini"));
-            _connectionString = ini["dataBaseConfig"]["connStr"].ToString();
-            _providerName = ini["dataBaseConfig"]["providerName"].ToString();
+            if (ini.ContainsKey("dataBaseConfig"))
+            {
+                if (ini["dataBaseConfig"].ContainsKey("connStr"))
+                {
+                    _connectionString = ini["dataBaseConfig"]["connStr"].ToString();
+                }
+                if (ini["dataBaseConfig"].ContainsKey("providerName"))
+                {
+                    _providerName = ini["dataBaseConfig"]["providerName"].ToString();
+                }
+                
+            }
+            
         }
 
         #region 私有方法

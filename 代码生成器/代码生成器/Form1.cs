@@ -60,7 +60,12 @@ namespace 代码生成器
             FrmSelectDatabase fsd = new FrmSelectDatabase();
             fsd.ShowDialog(this);
             fsd.Dispose();
-            InitTreeView();
+            if (System.IO.File.Exists(System.IO.Path.Combine(Environment.CurrentDirectory, "config.ini")))
+            {
+                InitTreeView();
+                ConfigHelper configHelper = new ConfigHelper();
+            }
+            
         }
 
         /// <summary>

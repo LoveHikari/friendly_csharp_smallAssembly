@@ -10,10 +10,8 @@ namespace Common
         {
             get
             {
-                if (_instance == null)
-                {
-                    _instance = new ConfigHelper();
-                }
+                _instance = new ConfigHelper();
+
                 return _instance;
             }
         }

@@ -3,3 +3,11 @@
 ################################################################################
 
 /代码生成器/Builder/obj/Debug
+/代码生成器/Builder/bin/Debug
+/代码生成器/Common/bin/Debug
+/代码生成器/DBUtility/bin/Debug
+/代码生成器/DBUtility/obj/Debug
+/代码生成器/Model/bin/Debug
+/代码生成器/Model/obj/Debug
+/代码生成器/代码生成器/bin/Debug
+/代码生成器/代码生成器/obj/Debug

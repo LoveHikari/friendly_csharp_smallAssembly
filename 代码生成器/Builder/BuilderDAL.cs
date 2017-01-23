@@ -287,7 +287,8 @@ namespace Builder
             strclass.AppendSpaceLine(3, "strSql.Append(\" values (\");");
             strclass.AppendSpaceLine(3, $"strSql.Append(\"@{string.Join(",", columnList).Replace(",",",@")})\");");
             strclass.AppendSpaceLine(3, "strSql.Append(\";select @@IDENTITY\");");
-            
+            strclass.AppendSpaceLine(3, "//strSql.Append(\";select last_insert_rowid();\");");
+
             strclass2.AppendSpaceLine(3, "List<DBParam> dbParams = new List<DBParam>(new DBParam[] ");
             strclass2.AppendSpaceLine(4, "{");
             foreach (ColumnModel field in _fieldlist)
