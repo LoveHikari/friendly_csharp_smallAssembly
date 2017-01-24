@@ -16,7 +16,7 @@ namespace 代码生成器
 {
     public partial class Form1 : Form
     {
-        private string _providerName;
+
         public Form1()
         {
             InitializeComponent();
@@ -24,7 +24,6 @@ namespace 代码生成器
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            _providerName = ConfigHelper.Instance.ProviderName;
             if (System.IO.File.Exists(System.IO.Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase, "config.ini")))
             {
                 InitTreeView();
@@ -63,7 +62,6 @@ namespace 代码生成器
             if (System.IO.File.Exists(System.IO.Path.Combine(Environment.CurrentDirectory, "config.ini")))
             {
                 InitTreeView();
-                ConfigHelper configHelper = new ConfigHelper();
             }
             
         }
@@ -76,8 +74,9 @@ namespace 代码生成器
             treeView1.Nodes.Clear();
             treeView1.BeginUpdate();
             string databaseName = ConfigHelper.Instance.DatabaseName;
+            string providerName = ConfigHelper.Instance.ProviderName;
             DataTable dt;
-            switch (_providerName)
+            switch (providerName)
             {
                 case "System.Data.SQLite":
                     dt = DBUtility.SQLiteBll.GetAllTable();
@@ -155,8 +154,8 @@ namespace 代码生成器
             string dalpath = this.txtDalPath.Text;
             string bllpath = this.txtBllPath.Text;
 
-            string modelSuffix = this.txtBllSuffix.Text;
-            string dalSuffix = this.txtBllSuffix.Text;
+            string modelSuffix = this.txtModelSuffix.Text;
+            string dalSuffix = this.txtDalSuffix.Text;
             string bllSuffix = this.txtBllSuffix.Text;
 
             string tableName = treeView1.SelectedNode.Name;

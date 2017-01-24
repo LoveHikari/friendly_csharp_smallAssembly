@@ -194,8 +194,8 @@ namespace Builder
                 strclass2.AppendSpaceLine(2, "/// </summary>");
                 strclass2.AppendSpaceLine(2, "public " + columnType + isnull + " " + columnName.ToFirstUpper());// Ù–‘
                 strclass2.AppendSpaceLine(2, "{");
-                strclass2.AppendSpaceLine(3, "set{" + " _" + columnName.ToLower() + "=value;}");
-                strclass2.AppendSpaceLine(3, "get{return " + "_" + columnName.ToLower() + ";}");
+                strclass2.AppendSpaceLine(3, "set{" + " _" + columnName.ToFirstLower() + "=value;}");
+                strclass2.AppendSpaceLine(3, "get{return " + "_" + columnName.ToFirstLower() + ";}");
                 strclass2.AppendSpaceLine(2, "}");
             }
             strclass.Append(strclass1);

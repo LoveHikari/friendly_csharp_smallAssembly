@@ -91,7 +91,7 @@ namespace 代码生成器
         /// <param name="e"></param>
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "txt Files (*.txt)|*.txt";
+            openFileDialog1.Filter = "All Files (*.*)|*.*";
 
             var result = openFileDialog1.ShowDialog();
             if (result == DialogResult.OK)
