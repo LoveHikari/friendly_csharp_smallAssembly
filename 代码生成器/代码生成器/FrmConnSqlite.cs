@@ -41,10 +41,11 @@ namespace 代码生成器
             //    sb.Append($"Password={txtPwd.Text};");
             //}
             //sb.Append("Pooling=true;FailIfMissing=false;");
-
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "connStr", this.txtConnStr.Text);
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "databaseName", txtDatabaseFile.Text);
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "providerName", "System.Data.SQLite");
+            ConfigHelper configHelper = new ConfigHelper();
+            configHelper.Connstr=this.txtConnStr.Text;
+            configHelper.DatabaseName=this.txtDatabaseFile.Text;
+            configHelper.ProviderName="System.Data.SQLite";
+            configHelper.WriteConfig();
             this.Close();
         }
         /// <summary>

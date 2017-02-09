@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26020.0
+VisualStudioVersion = 15.0.26127.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "代码生成器", "代码生成器\代码生成器.csproj", "{4A33AA94-2A5B-4FB4-9FF4-8FF3A117B308}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{97A2E8FD-2649-44E4-B88A-33B7C7D48F2F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Builder", "Builder\Builder.csproj", "{AC715479-5922-4C17-9DE6-9FEF3268EFE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBuilder", "IBuilder\IBuilder.csproj", "{4F461108-425E-4286-84D1-1A12B13B6788}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{AC715479-5922-4C17-9DE6-9FEF3268EFE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC715479-5922-4C17-9DE6-9FEF3268EFE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC715479-5922-4C17-9DE6-9FEF3268EFE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F461108-425E-4286-84D1-1A12B13B6788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F461108-425E-4286-84D1-1A12B13B6788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F461108-425E-4286-84D1-1A12B13B6788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F461108-425E-4286-84D1-1A12B13B6788}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

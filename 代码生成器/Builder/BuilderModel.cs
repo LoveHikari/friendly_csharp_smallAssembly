@@ -10,7 +10,7 @@ namespace Builder
     /// <summary>
     /// Model代码生成组件
     /// </summary>
-    public class BuilderModel
+    public class BuilderModel : IBuilder.IBuilderModel
     {
         #region 字段
         private string _modelpath;  //实体类的命名空间
@@ -71,7 +71,7 @@ namespace Builder
         /// 生成实体类的属性
         /// </summary>
         /// <returns></returns>
-        private string CreatModelMethod()
+        public string CreatModelMethod()
         {
 
             StringBuilder strclass = new StringBuilder();

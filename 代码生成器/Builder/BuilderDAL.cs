@@ -11,7 +11,7 @@ namespace Builder
     /// <summary>
     /// 数据访问层代码构造器（Parameter方式）
     /// </summary>
-    public class BuilderDAL
+    public class BuilderDAL:IBuilder.IBuilderDAL
     {
         #region 字段
         private string _modelname; //model类名
@@ -31,6 +31,46 @@ namespace Builder
         private string _keysNullTip;
 
         #endregion
+
+        #region 属性
+        /// <summary>
+        /// 主键或条件字段中是否有标识列
+        /// </summary>
+        public bool IsHasIdentity => _isHasIdentity;
+        /// <summary>
+        /// 标识列，或主键字段类型
+        /// </summary>
+        public string IdentityKeyType => _identityKeyType;
+        /// <summary>
+        /// model类名
+        /// </summary>
+        public string Modelname => _modelname;
+        /// <summary>
+        /// 选择要生成的字段集合
+        /// </summary>
+        public List<ColumnModel> Fieldlist => _fieldlist;
+        /// <summary>
+        /// 存储过程参数 调用符号@
+        /// </summary>
+        public string PreParameter => _preParameter;
+        /// <summary>
+        /// 数据库访问类名
+        /// </summary>
+        public string DbhelperName=> _dbhelperName;
+        /// <summary>
+        /// model命名空间
+        /// </summary>
+        public string Modelpath => _modelpath;
+        /// <summary>
+        /// 数据层的命名空间
+        /// </summary>
+        public string Dalpath => _dalpath;
+        /// <summary>
+        /// dal类名
+        /// </summary>
+        public string Dalname => _dalname;
+        #endregion
+
 
         /// <summary>
         /// 构造函数
@@ -81,13 +121,15 @@ namespace Builder
         /// <summary>
         /// 得到整个类的代码
         /// </summary>
-        public string CreatDal(bool maxid, bool exists, bool add, bool update, bool delete, bool getModel, bool list)
+        public virtual string CreatDal(bool maxid, bool exists, bool add, bool update, bool delete, bool getModel, bool list)
         {
             StringBuilder strclass = new StringBuilder();
             strclass.AppendLine("using System;");
             strclass.AppendLine("using System.Data;");
             strclass.AppendLine("using System.Text;");
             strclass.AppendLine("using System.Data.SqlClient;");
+            strclass.AppendLine("using DotNet.Utilities.DBHelper;");
+            strclass.AppendLine("using System.Collections.Generic;");
 
             strclass.AppendLine("using "+ _modelpath + ";//Please add references");
             strclass.AppendLine("namespace " + _dalpath);
@@ -158,11 +200,11 @@ namespace Builder
         /// 得到单例模式代码
         /// </summary>
         /// <returns></returns>
-        private string CreatInstance()
+        public string CreatInstance()
         {
             StringBuilder strclass = new StringBuilder();
             strclass.AppendSpaceLine(2, "#region  instance");
-            strclass.AppendSpaceLine(2, "private volatile static " + _dalname + " _instance = null;");
+            strclass.AppendSpaceLine(2, "private static volatile " + _dalname + " _instance = null;");
             strclass.AppendSpaceLine(2, "private static readonly object lockHelper = new object();");
             strclass.AppendSpaceLine(2, "public " + _dalname + "(){}");
             strclass.AppendSpaceLine(2, "public static " + _dalname + " Instance");
@@ -256,7 +298,7 @@ namespace Builder
         /// <summary>
         /// 得到Add()的代码
         /// </summary>
-        public string CreatAdd()
+        public virtual string CreatAdd()
         {
             StringBuilder strclass = new StringBuilder();
             StringBuilder strclass2 = new StringBuilder();  //parameters参数
@@ -298,20 +340,20 @@ namespace Builder
                     continue;  //如果是自增列，则跳过
                 }
 
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.DbTypeToCS(field.TypeName)},{field.Precision}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
             }
             strclass2.DelLastChar(",");
-            strclass2.AppendSpaceLine(4, "}");
+            strclass2.AppendSpaceLine(4, "});");
             strclass.AppendLine(strclass2.ToString());
             //重新定义方法头
             if (strretu == "void")
             {
-                strclass.AppendSpaceLine(3, "" + _dbhelperName + ".ExecSqlScalar(strSql.ToString(),parameters);");
+                strclass.AppendSpaceLine(3, "" + _dbhelperName + ".ExecuteScalar(strSql.ToString(),dbParams);");
             }
             else if (strretu == "bool")
             {
                 strclass.AppendSpaceLine(3,
-                    "int rows=" + _dbhelperName + ".ExecSqlNonQuery(strSql.ToString(),parameters);");
+                    "int rows=" + _dbhelperName + ".ExecuteNonQuery(strSql.ToString(),dbParams);");
                 strclass.AppendSpaceLine(3, "if (rows > 0)");
                 strclass.AppendSpaceLine(3, "{");
                 strclass.AppendSpaceLine(4, "return true;");
@@ -324,7 +366,7 @@ namespace Builder
             else
             {
                 strclass.AppendSpaceLine(3,
-                    "object obj = " + _dbhelperName + ".ExecSqlScalar(strSql.ToString(),parameters);");
+                    "object obj = " + _dbhelperName + ".ExecuteScalar(strSql.ToString(),dbParams);");
                 strclass.AppendSpaceLine(3, "if (obj == null)");
                 strclass.AppendSpaceLine(3, "{");
                 strclass.AppendSpaceLine(4, "return 0;");
@@ -364,6 +406,7 @@ namespace Builder
             strclass.AppendSpaceLine(2, "/// </summary>");
             strclass.AppendSpaceLine(2, "public bool Update(" + _modelname + " model)");
             strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
             strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
             strclass.AppendSpaceLine(3, "strSql.Append(\"update " + _fieldlist[0].TableName + " set \");");
             
@@ -391,15 +434,15 @@ namespace Builder
                 {
                     continue;
                 }
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.DbTypeToCS(field.TypeName)},{field.Precision}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
 
             }
+
             foreach (ColumnModel field in fieldpk)
             {
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"@{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.DbTypeToCS(field.TypeName)},{field.Precision}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.SqlTypeToDbType(field.TypeName)}{(field.Precision == 0 ? "" : ", " + field.Precision)}),");
             }
 
-            strclass2.DelLastChar(",");
             if (strclass2.Length > 0)
             {
                 //去掉最后的逗号
@@ -420,11 +463,12 @@ namespace Builder
 
             }
             strclass2.AppendLine("});");
+            strclass.DelLastChar(",").AppendLine("\"); ");
             strclass.AppendSpaceLine(3, "strSql.Append(\" where " + _identityKey + "=@" + _identityKey + "\");");
 
             strclass.AppendLine(strclass2.ToString());
 
-            strclass.AppendSpaceLine(3, "int rows=" + _dbhelperName + ".ExecSqlNonQuery(strSql.ToString(),parameters);");
+            strclass.AppendSpaceLine(3, "int rows=" + _dbhelperName + ".ExecuteNonQuery(strSql.ToString(),dbParams);");
 
             strclass.AppendSpaceLine(3, "if (rows > 0)");
             strclass.AppendSpaceLine(3, "{");
@@ -451,16 +495,17 @@ namespace Builder
             strclass.AppendSpaceLine(2, "/// <summary>");
             strclass.AppendSpaceLine(2, "/// 删除一条数据");
             strclass.AppendSpaceLine(2, "/// </summary>");
-            strclass.AppendSpaceLine(2, "public bool Delete(" + _identityKeyType + " " + _identityKey + ")");
+            strclass.AppendSpaceLine(2, "public bool Delete(" + _identityKeyType + " " + _identityKey.ToFirstLower() + ")");
             strclass.AppendSpaceLine(2, "{");
             strclass.AppendSpaceLine(3, _keysNullTip);
+            strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
             strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
             strclass.AppendSpaceLine(3, "strSql.Append(\"delete from " + _fieldlist[0].TableName + " \");");
             strclass.AppendSpaceLine(3, "strSql.Append(\" where " + _identityKey + "=@" + _identityKey + "\");");
             strclass.AppendSpaceLine(3, "List<DBParam> dbParams = new List<DBParam>(new DBParam[]  {");
-            strclass.AppendSpaceLine(4, $"new DBParam(\"@{_identityKey}\", DbType.{CodeCommon.DbTypeToCS(_identityKeyType)},4)");
+            strclass.AppendSpaceLine(4, $"new DBParam(\"@{_identityKey}\",{_identityKey.ToFirstLower()}, DbType.{CodeCommon.SqlTypeToDbType(_identityKeyType)},4)");
             strclass.AppendSpaceLine(3, "});");
-            strclass.AppendSpaceLine(3, "int rows=" + _dbhelperName + ".ExecSqlNonQuery(strSql.ToString(),parameters);");
+            strclass.AppendSpaceLine(3, "int rows=" + _dbhelperName + ".ExecuteNonQuery(strSql.ToString(),dbParams);");
             strclass.AppendSpaceLine(3, "if (rows > 0)");
             strclass.AppendSpaceLine(3, "{");
             strclass.AppendSpaceLine(4, "return true;");
@@ -496,12 +541,13 @@ namespace Builder
                 strclass.AppendSpaceLine(2, "/// <summary>");
                 strclass.AppendSpaceLine(2, "/// 批量删除数据");
                 strclass.AppendSpaceLine(2, "/// </summary>");
-                strclass.AppendSpaceLine(2, "public bool DeleteList(string " + keyField + "list )");
+                strclass.AppendSpaceLine(2, "public bool DeleteList(string " + keyField.ToFirstLower() + "list )");
                 strclass.AppendSpaceLine(2, "{");
+                strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
                 strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
                 strclass.AppendSpaceLine(3, "strSql.Append(\"delete from " + _fieldlist[0].TableName + " \");");
-                strclass.AppendSpaceLine(3, "strSql.Append(\" where " + keyField + " in (\"+" + keyField + "list + \")  \");");
-                strclass.AppendSpaceLine(3, "int rows=" + _dbhelperName + ".ExecSqlNonQuery(strSql.ToString());");
+                strclass.AppendSpaceLine(3, "strSql.Append(\" where " + keyField + " in (\"+" + keyField.ToFirstLower() + "list + \")  \");");
+                strclass.AppendSpaceLine(3, "int rows=" + _dbhelperName + ".ExecuteNonQuery(strSql.ToString());");
                 strclass.AppendSpaceLine(3, "if (rows > 0)");
                 strclass.AppendSpaceLine(3, "{");
                 strclass.AppendSpaceLine(4, "return true;");
@@ -528,9 +574,10 @@ namespace Builder
             strclass.AppendSpaceLine(2, "/// <summary>");
             strclass.AppendSpaceLine(2, "/// 得到一个对象实体");
             strclass.AppendSpaceLine(2, "/// </summary>");
-            strclass.AppendSpaceLine(2, "public " + _modelname + " GetModel(" + _identityKeyType + " " + _identityKey + ")");
+            strclass.AppendSpaceLine(2, "public " + _modelname + " GetModel(" + _identityKeyType + " " + _identityKey.ToFirstLower() + ")");
             strclass.AppendSpaceLine(2, "{");
             strclass.AppendSpaceLine(3, _keysNullTip);
+            strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
             strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
             strclass.AppendSpace(3, "strSql.Append(\"select ");
 
@@ -540,12 +587,12 @@ namespace Builder
             strclass.AppendSpaceLine(3, "strSql.Append(\" where " + _identityKey + "=@" + _identityKey + "\");");
 
             strclass.AppendSpaceLine(3, "List<DBParam> dbParams = new List<DBParam>(new DBParam[]  {");
-            strclass.AppendSpaceLine(4, $"new DBParam(\"@{_identityKey}\", DbType.{CodeCommon.DbTypeToCS(_identityKeyType)},4)");
+            strclass.AppendSpaceLine(4, $"new DBParam(\"@{_identityKey}\",{_identityKey.ToFirstLower()}, DbType.{CodeCommon.SqlTypeToDbType(_identityKeyType)},4)");
 
             strclass.AppendSpaceLine(3, "});");
 
             strclass.AppendSpaceLine(3, "" + _modelname + " model=new " + _modelname + "();");
-            strclass.AppendSpaceLine(3, "DataSet ds=" + _dbhelperName + ".ExecSqlDataSet(strSql.ToString(),parameters);");
+            strclass.AppendSpaceLine(3, "DataSet ds=" + _dbhelperName + ".ExecuteDataSet(strSql.ToString(),dbParams);");
             strclass.AppendSpaceLine(3, "if(ds.Tables[0].Rows.Count>0)");
             strclass.AppendSpaceLine(3, "{");
 
@@ -694,6 +741,7 @@ namespace Builder
             strclass.AppendSpaceLine(2, "/// </summary>");
             strclass.AppendSpaceLine(2, "public DataSet GetList(string strWhere)");
             strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
             strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
             strclass.AppendSpace(3, "strSql.Append(\"select ");
             strclass.AppendLine(_fieldstrlist + " \");");
@@ -702,7 +750,7 @@ namespace Builder
             strclass.AppendSpaceLine(3, "{");
             strclass.AppendSpaceLine(4, "strSql.Append(\" where \"+strWhere);");
             strclass.AppendSpaceLine(3, "}");
-            strclass.AppendSpaceLine(3, "return " + _dbhelperName + ".ExecSqlDataSet(strSql.ToString());");
+            strclass.AppendSpaceLine(3, "return " + _dbhelperName + ".ExecuteDataSet(strSql.ToString());");
             strclass.AppendSpaceLine(2, "}");
 
             strclass.AppendLine();
@@ -711,6 +759,7 @@ namespace Builder
             strclass.AppendSpaceLine(2, "/// </summary>");
             strclass.AppendSpaceLine(2, "public DataSet GetList(string strWhere,string filedOrder)");
             strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
             strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
             strclass.AppendSpaceLine(3, "strSql.Append(\"select \");");
             strclass.AppendSpaceLine(3, "strSql.Append(\" " + _fieldstrlist + " \");");
@@ -720,20 +769,21 @@ namespace Builder
             strclass.AppendSpaceLine(4, "strSql.Append(\" where \"+strWhere);");
             strclass.AppendSpaceLine(3, "}");
             strclass.AppendSpaceLine(3, "strSql.Append(\" order by \" + filedOrder);");
-            strclass.AppendSpaceLine(3, "return " + _dbhelperName + ".ExecSqlDataSet(strSql.ToString());");
+            strclass.AppendSpaceLine(3, "return " + _dbhelperName + ".ExecuteDataSet(strSql.ToString());");
             strclass.AppendSpaceLine(2, "}");
 
             strclass.AppendLine();
             strclass.AppendSpaceLine(2, "/// <summary>");
             strclass.AppendSpaceLine(2, "/// 获得前几行数据");
             strclass.AppendSpaceLine(2, "/// </summary>");
-            strclass.AppendSpaceLine(2, "public DataSet GetList(int Top,string strWhere,string filedOrder)");
+            strclass.AppendSpaceLine(2, "public DataSet GetList(int top,string strWhere,string filedOrder)");
             strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
             strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
             strclass.AppendSpaceLine(3, "strSql.Append(\"select \");");
-            strclass.AppendSpaceLine(3, "if(Top>0)");
+            strclass.AppendSpaceLine(3, "if(top>0)");
             strclass.AppendSpaceLine(3, "{");
-            strclass.AppendSpaceLine(4, "strSql.Append(\" top \"+Top.ToString());");
+            strclass.AppendSpaceLine(4, "strSql.Append(\" top \"+top);");
             strclass.AppendSpaceLine(3, "}");
             strclass.AppendSpaceLine(3, "strSql.Append(\" " + _fieldstrlist + " \");");
             strclass.AppendSpaceLine(3, "strSql.Append(\" FROM " + _fieldlist[0].TableName + " \");");
@@ -742,7 +792,7 @@ namespace Builder
             strclass.AppendSpaceLine(4, "strSql.Append(\" where \"+strWhere);");
             strclass.AppendSpaceLine(3, "}");
             strclass.AppendSpaceLine(3, "strSql.Append(\" order by \" + filedOrder);");
-            strclass.AppendSpaceLine(3, "return " + _dbhelperName + ".ExecSqlDataSet(strSql.ToString());");
+            strclass.AppendSpaceLine(3, "return " + _dbhelperName + ".ExecuteDataSet(strSql.ToString());");
             strclass.AppendSpaceLine(2, "}");
 
 
@@ -761,13 +811,14 @@ namespace Builder
             strclass.AppendSpaceLine(2, "/// </summary>");
             strclass.AppendSpaceLine(2, "public int GetRecordCount(string strWhere)");
             strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
             strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
             strclass.AppendSpaceLine(3, "strSql.Append(\"select count(1) FROM " + _fieldlist[0].TableName + " \");");
             strclass.AppendSpaceLine(3, "if(strWhere.Trim()!=\"\")");
             strclass.AppendSpaceLine(3, "{");
             strclass.AppendSpaceLine(4, "strSql.Append(\" where \"+strWhere);");
             strclass.AppendSpaceLine(3, "}");
-            strclass.AppendSpaceLine(3, "object obj = SqlHelper.Instance.ExecSqlScalar(strSql.ToString());");
+            strclass.AppendSpaceLine(3, "object obj = "+ _dbhelperName + ".ExecuteScalar(strSql.ToString());");
             strclass.AppendSpaceLine(3, "if (obj == null)");
             strclass.AppendSpaceLine(3, "{");
             strclass.AppendSpaceLine(4, "return 0;");
@@ -785,6 +836,7 @@ namespace Builder
             strclass.AppendSpaceLine(2, "/// </summary>");
             strclass.AppendSpaceLine(2, "public DataSet GetListByPage(string strWhere, string orderby, int startIndex, int endIndex)");
             strclass.AppendSpaceLine(2, "{");
+            strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
             strclass.AppendSpaceLine(3, "StringBuilder strSql=new StringBuilder();");
             strclass.AppendSpaceLine(3, "strSql.Append(\"SELECT * FROM ( \");");
             strclass.AppendSpaceLine(3, "strSql.Append(\" SELECT ROW_NUMBER() OVER (\");");
@@ -806,7 +858,7 @@ namespace Builder
             strclass.AppendSpaceLine(3, "strSql.Append(\" ) TT\");");
             strclass.AppendSpaceLine(3, "strSql.AppendFormat(\" WHERE TT.Row between {0} and {1}\", startIndex, endIndex);");
 
-            strclass.AppendSpaceLine(3, "return " + _dbhelperName + ".ExecSqlDataSet(strSql.ToString());");
+            strclass.AppendSpaceLine(3, "return " + _dbhelperName + ".ExecuteDataSet(strSql.ToString());");
             strclass.AppendSpaceLine(2, "}");
 
 

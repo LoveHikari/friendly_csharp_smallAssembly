@@ -25,9 +25,10 @@ namespace 代码生成器
         private void FrmConnServer_Load(object sender, EventArgs e)
         {
             cbDatabase.Enabled = false;
-            txtServerName.Text = ConfigHelper.Instance.ServerName;
-            txtUid.Text = ConfigHelper.Instance.Uid;
-            txtPwd.Text = ConfigHelper.Instance.Pwd;
+            ConfigHelper configHelper = new ConfigHelper();
+            txtServerName.Text = configHelper.ServerName;
+            txtUid.Text = configHelper.Uid;
+            txtPwd.Text = configHelper.Pwd;
         }
         /// <summary>
         /// 连接/测试按钮
@@ -38,11 +39,13 @@ namespace 代码生成器
         {
             string cooStr = $"server={txtServerName.Text};Database=master;uid={txtUid.Text};pwd={txtPwd.Text};";
 
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "connStr", cooStr);
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "providerName", "System.Data.SqlClient");
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "serverName", txtServerName.Text);
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "uid", txtUid.Text);
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "pwd", txtPwd.Text);
+            ConfigHelper configHelper = new ConfigHelper();
+            configHelper.Connstr = cooStr;
+            configHelper.ProviderName = "System.Data.SqlClient";
+            configHelper.ServerName = this.txtServerName.Text;
+            configHelper.Uid = this.txtUid.Text;
+            configHelper.Pwd = this.txtPwd.Text;
+            configHelper.WriteConfig();
             DataTable dt;
             try
             {
@@ -67,8 +70,10 @@ namespace 代码生成器
         private void btnDetermine_Click(object sender, EventArgs e)
         {
             string cooStr = $"server={txtServerName.Text};Database={cbDatabase.SelectedItem};uid={txtUid.Text};pwd={txtPwd.Text};";
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "connStr", cooStr);
-            ConfigHelper.Instance.WriteConfig("dataBaseConfig", "databaseName", cbDatabase.SelectedItem.ToString());
+            ConfigHelper configHelper = new ConfigHelper();
+            configHelper.Connstr = cooStr;
+            configHelper.DatabaseName = cbDatabase.SelectedItem.ToString();
+            configHelper.WriteConfig();
             this.Close();
         }
         /// <summary>

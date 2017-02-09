@@ -74,6 +74,7 @@
             this.txtCode = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtConnstr = new System.Windows.Forms.TextBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -508,6 +509,7 @@
             this.txtCode.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtCode.Size = new System.Drawing.Size(825, 418);
             this.txtCode.TabIndex = 0;
+            this.txtCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyDown);
             // 
             // label5
             // 
@@ -525,11 +527,22 @@
             this.txtConnstr.Size = new System.Drawing.Size(447, 21);
             this.txtConnstr.TabIndex = 7;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(695, 22);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.Text = "刷新";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1299, 538);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.txtConnstr);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tabControl1);
@@ -609,6 +622,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 

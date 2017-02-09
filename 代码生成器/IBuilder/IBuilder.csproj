@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC715479-5922-4C17-9DE6-9FEF3268EFE3}</ProjectGuid>
+    <ProjectGuid>{4F461108-425E-4286-84D1-1A12B13B6788}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Builder</RootNamespace>
-    <AssemblyName>Builder</AssemblyName>
+    <RootNamespace>IBuilder</RootNamespace>
+    <AssemblyName>IBuilder</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,26 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuilderBLL.cs" />
-    <Compile Include="BuilderDAL.cs" />
-    <Compile Include="BuilderDALForSqlite.cs" />
-    <Compile Include="BuilderDALForSqlServer .cs" />
-    <Compile Include="BuilderModel.cs" />
+    <Compile Include="IBuilderDAL.cs" />
+    <Compile Include="IBuilderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{706f73c7-ebd1-4bf5-a5e6-a527031768a5}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IBuilder\IBuilder.csproj">
-      <Project>{4f461108-425e-4286-84d1-1a12b13b6788}</Project>
-      <Name>IBuilder</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{97a2e8fd-2649-44e4-b88a-33b7c7d48f2f}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

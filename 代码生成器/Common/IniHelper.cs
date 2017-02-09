@@ -127,6 +127,7 @@ namespace Common
 
             foreach (var key in keysList)
             {
+                buffer = new byte[1024];
                 Dictionary<object, object> value = new Dictionary<object, object>();
                 bufLen = GetPrivateProfileSection(key.ToString(), buffer, buffer.GetUpperBound(0), iniPath);
                 
