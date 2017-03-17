@@ -45,6 +45,11 @@
     <Compile Include="BuilderDALForSqlite.cs" />
     <Compile Include="BuilderDALForSqlServer .cs" />
     <Compile Include="BuilderModel.cs" />
+    <Compile Include="MVC\BuilderBLL.cs" />
+    <Compile Include="MVC\BuilderDAL.cs" />
+    <Compile Include="MVC\BuilderIBLL.cs" />
+    <Compile Include="MVC\BuilderIDAL.cs" />
+    <Compile Include="MVC\BuilderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

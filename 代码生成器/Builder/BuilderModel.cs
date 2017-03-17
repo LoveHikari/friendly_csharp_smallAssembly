@@ -32,12 +32,24 @@ namespace Builder
             string tableName = _fieldlist[0].TableName;
             _modelName = tableName.ToPascal() + modelSuffix;
         }
+        /// <summary>
+        /// 实体类的命名空间
+        /// </summary>
+        public string Modelpath { get => _modelpath; set => _modelpath = value; }
+        /// <summary>
+        /// 选择的字段集合
+        /// </summary>
+        public List<ColumnModel> Fieldlist { get => _fieldlist; set => _fieldlist = value; }
+        /// <summary>
+        /// 实体类名
+        /// </summary>
+        public string ModelName { get => _modelName; set => _modelName = value; }
 
 
         /// <summary>
         /// 生成完整Model类
         /// </summary>
-        public string CreatModel()
+        public virtual string CreatModel()
         {
             StringBuilder strclass = new StringBuilder();
             strclass.AppendLine("using System;");
@@ -71,7 +83,7 @@ namespace Builder
         /// 生成实体类的属性
         /// </summary>
         /// <returns></returns>
-        public string CreatModelMethod()
+        public virtual string CreatModelMethod()
         {
 
             StringBuilder strclass = new StringBuilder();

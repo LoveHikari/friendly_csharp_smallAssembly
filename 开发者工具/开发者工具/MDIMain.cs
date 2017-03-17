@@ -109,6 +109,8 @@ namespace 开发者工具
 
         }
 
+        #region 工具箱
+
         private void 常用工具ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Tools.MainWindow mainWindow = new Tools.MainWindow();
@@ -120,5 +122,15 @@ namespace 开发者工具
         {
 
         }
+
+        private void 生成MVC5框架ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateMvc.Window1 window1 = new CreateMvc.Window1();
+            window1.ShowDialog();
+            window1.Close();
+        }
+
+        #endregion
+
     }
 }

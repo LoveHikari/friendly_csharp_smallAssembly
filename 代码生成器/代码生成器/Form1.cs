@@ -10,8 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Builder;
+using Builder.MVC;
 using Common;
 using Model;
+using BuilderModel = Builder.BuilderModel;
 
 namespace 代码生成器
 {
@@ -21,6 +23,11 @@ namespace 代码生成器
         public Form1()
         {
             InitializeComponent();
+
+            HideControls();
+            this.gbCodeForlayers.Visible = true;
+            //绑定事件
+            BindEvent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -116,14 +123,15 @@ namespace 代码生成器
         /// <param name="e"></param>
         private void btnCreateCode_Click(object sender, EventArgs e)
         {
-            string modelpath = this.txtModelPath.Text;
-            string dalpath = this.txtDalPath.Text;
-            string bllpath = this.txtBllPath.Text;
-
-            string modelSuffix = this.txtModelSuffix.Text;
-            string dalSuffix = this.txtDalSuffix.Text;
-            string bllSuffix = this.txtBllSuffix.Text;
-
+            ConfigModel configModel = new ConfigModel
+            {
+                ModelPath = this.txtModelPath.Text,
+                DalPath = this.txtDalPath.Text,
+                BllPath = this.txtBllPath.Text,
+                ModelSuffix = this.txtModelSuffix.Text,
+                DalSuffix = this.txtDalSuffix.Text,
+                BllSuffix = this.txtBllSuffix.Text
+            };
             string tableName = treeView1.SelectedNode.Name;
 
             ConfigHelper configHelper = new ConfigHelper();
@@ -145,23 +153,32 @@ namespace 代码生成器
                     break;
             }
 
-            if (rbModel.Checked)
+            if (this.rbMvc.Checked)
             {
-                //生成实体类
-                BuilderModel builderModel = new BuilderModel(columns, modelpath, modelSuffix);
-                txtCode.Text = builderModel.CreatModel();
+                CreateMvcCode(columns, configModel);
             }
-            if (rbDal.Checked)
+            else
             {
-                //生成数据访问代码
-                this.txtCode.Text = GenerateDal(className, columns, modelpath, dalpath, modelSuffix, dalSuffix);
+                if (rbModel.Checked)
+                {
+                    //生成实体类
+                    Builder.BuilderModel builderModel = new Builder.BuilderModel(columns, configModel.ModelPath, configModel.ModelSuffix);
+                    txtCode.Text = builderModel.CreatModel();
+                }
+                if (rbDal.Checked)
+                {
+                    //生成数据访问代码
+                    this.txtCode.Text = GenerateDal(className, columns, configModel.ModelPath, configModel.DalPath, configModel.ModelSuffix, configModel.DalSuffix);
+                }
+                if (rbBll.Checked)
+                {
+                    //生成业务逻辑层代码
+                    Builder.BuilderBLL builderBll = new Builder.BuilderBLL(columns, configModel.ModelPath, configModel.DalPath, configModel.BllPath, configModel.ModelSuffix, configModel.DalSuffix, configModel.BllSuffix);
+                    txtCode.Text = builderBll.CreatBll(true, true, true, true, true, true, true);
+                }
             }
-            if (rbBll.Checked)
-            {
-                //生成业务逻辑层代码
-                BuilderBLL builderBll = new BuilderBLL(columns, modelpath, dalpath, bllpath, modelSuffix, dalSuffix, bllSuffix);
-                txtCode.Text = builderBll.CreatBll(true, true, true, true, true, true, true);
-            }
+
+            
 
             tabControl1.SelectedIndex = 1;
 
@@ -269,7 +286,110 @@ namespace 代码生成器
             object value = type.GetMethod("CreatDal", paramsType).Invoke(instance, paramsObj);
             return value.ToString();
         }
+        /// <summary>
+        /// 创建mvc代码
+        /// </summary>
+        /// <param name="columns">列信息</param>
+        /// <param name="configModel">配置</param>
+        private void CreateMvcCode(List<ColumnModel> columns,ConfigModel configModel)
+        {
+            if (this.rbModels2.Checked)
+            {
+                //生成实体类
+                Builder.MVC.BuilderModel builderModel = new Builder.MVC.BuilderModel(columns, configModel.ModelPath, configModel.ModelSuffix);
+                txtCode.Text = builderModel.CreatModel();
+            }
+            if (this.rbIDal2.Checked)
+            {
+                //生成数据层接口
+                Builder.MVC.BuilderIDAL builderIdal = new Builder.MVC.BuilderIDAL(configModel.DalPath,configModel.ModelPath, columns);
+                txtCode.Text = builderIdal.CreatIDAL();
+            }
+            if (this.rbDal2.Checked)
+            {
+                //生成数据层
+                Builder.MVC.BuilderDAL builderDal = new Builder.MVC.BuilderDAL(configModel.DalPath,configModel.ModelPath, columns);
+                txtCode.Text = builderDal.CreatIDAL();
+            }
+            if (this.rbIbll2.Checked)
+            {
+                //生成业务层接口
+                Builder.MVC.BuilderIBLL builderIbll = new Builder.MVC.BuilderIBLL(configModel.DalPath, configModel.ModelPath, columns);
+                txtCode.Text = builderIbll.CreatIBLL();
+            }
+            if (this.rbBll2.Checked)
+            {
+                //生成业务层
+                Builder.MVC.BuilderBLL builderBll = new Builder.MVC.BuilderBLL(configModel.DalPath, configModel.ModelPath,configModel.DalPath, columns);
+                txtCode.Text = builderBll.CreatBLL();
+            }
+            if (this.rbContext2.Checked)
+            {
+                //生成数据上下文
+            }
+        }
         #endregion
-        
+
+        /// <summary>
+        /// 架构选择中的单选控件点击时发生
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Architecture_RadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            HideControls();
+            RadioButton rb = (RadioButton)sender;
+            if (rb.Checked)
+            {
+                switch (rb.Text)
+                {
+                    case "简单三层":
+                        this.gbCodeForlayers.Visible = true;
+                        break;
+                    case "工厂模式三层":
+                        break;
+                    case "MVC模式":
+                        this.gbCodeForMvc.Visible = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// 绑定事件
+        /// </summary>
+        private void BindEvent()
+        {
+            List<Control> controlList = Public.GetAllControls(this.gbArchitecture);
+            foreach (Control control in controlList)
+            {
+                RadioButton rb = (RadioButton)control;
+                rb.CheckedChanged += Architecture_RadioButton_CheckedChanged;
+            }
+        }
+        /// <summary>
+        /// 隐藏代码类型控件
+        /// </summary>
+        private void HideControls()
+        {
+            List<Control> controlList = GetControls("代码类型");
+            foreach (Control control in controlList)
+            {
+                control.Visible = false;
+            }
+        }
+        /// <summary>
+        /// 获得指定文本的控件
+        /// </summary>
+        /// <param name="controlText"></param>
+        /// <returns></returns>
+        private List<Control> GetControls(string controlText)
+        {
+            var controlList = Public.GetAllControls(this);
+            return controlList.Where(c => c.Text == controlText).ToList();
+        }
+
     }
 }

@@ -64,6 +64,9 @@
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.arrangeIconsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.工具箱ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.常用工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.代码生成器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.contentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,9 +85,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.工具箱ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.常用工具ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.代码生成器ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.生成MVC5框架ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -302,7 +303,7 @@
             this.toolBarToolStripMenuItem.CheckOnClick = true;
             this.toolBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.toolBarToolStripMenuItem.Name = "toolBarToolStripMenuItem";
-            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.toolBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.toolBarToolStripMenuItem.Text = "工具栏(&T)";
             this.toolBarToolStripMenuItem.Click += new System.EventHandler(this.ToolBarToolStripMenuItem_Click);
             // 
@@ -312,7 +313,7 @@
             this.statusBarToolStripMenuItem.CheckOnClick = true;
             this.statusBarToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.statusBarToolStripMenuItem.Name = "statusBarToolStripMenuItem";
-            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.statusBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.statusBarToolStripMenuItem.Text = "状态栏(&S)";
             this.statusBarToolStripMenuItem.Click += new System.EventHandler(this.StatusBarToolStripMenuItem_Click);
             // 
@@ -327,7 +328,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "选项(&O)";
             // 
             // windowsMenu
@@ -346,44 +347,68 @@
             // newWindowToolStripMenuItem
             // 
             this.newWindowToolStripMenuItem.Name = "newWindowToolStripMenuItem";
-            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.newWindowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.newWindowToolStripMenuItem.Text = "新建窗口(&N)";
             this.newWindowToolStripMenuItem.Click += new System.EventHandler(this.ShowNewForm);
             // 
             // cascadeToolStripMenuItem
             // 
             this.cascadeToolStripMenuItem.Name = "cascadeToolStripMenuItem";
-            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.cascadeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cascadeToolStripMenuItem.Text = "层叠(&C)";
             this.cascadeToolStripMenuItem.Click += new System.EventHandler(this.CascadeToolStripMenuItem_Click);
             // 
             // tileVerticalToolStripMenuItem
             // 
             this.tileVerticalToolStripMenuItem.Name = "tileVerticalToolStripMenuItem";
-            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.tileVerticalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tileVerticalToolStripMenuItem.Text = "垂直平铺(&V)";
             this.tileVerticalToolStripMenuItem.Click += new System.EventHandler(this.TileVerticalToolStripMenuItem_Click);
             // 
             // tileHorizontalToolStripMenuItem
             // 
             this.tileHorizontalToolStripMenuItem.Name = "tileHorizontalToolStripMenuItem";
-            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.tileHorizontalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.tileHorizontalToolStripMenuItem.Text = "水平平铺(&H)";
             this.tileHorizontalToolStripMenuItem.Click += new System.EventHandler(this.TileHorizontalToolStripMenuItem_Click);
             // 
             // closeAllToolStripMenuItem
             // 
             this.closeAllToolStripMenuItem.Name = "closeAllToolStripMenuItem";
-            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.closeAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.closeAllToolStripMenuItem.Text = "全部关闭(&L)";
             this.closeAllToolStripMenuItem.Click += new System.EventHandler(this.CloseAllToolStripMenuItem_Click);
             // 
             // arrangeIconsToolStripMenuItem
             // 
             this.arrangeIconsToolStripMenuItem.Name = "arrangeIconsToolStripMenuItem";
-            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.arrangeIconsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.arrangeIconsToolStripMenuItem.Text = "排列图标(&A)";
             this.arrangeIconsToolStripMenuItem.Click += new System.EventHandler(this.ArrangeIconsToolStripMenuItem_Click);
+            // 
+            // 工具箱ToolStripMenuItem
+            // 
+            this.工具箱ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.常用工具ToolStripMenuItem,
+            this.代码生成器ToolStripMenuItem,
+            this.生成MVC5框架ToolStripMenuItem});
+            this.工具箱ToolStripMenuItem.Name = "工具箱ToolStripMenuItem";
+            this.工具箱ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
+            this.工具箱ToolStripMenuItem.Text = "工具箱";
+            // 
+            // 常用工具ToolStripMenuItem
+            // 
+            this.常用工具ToolStripMenuItem.Name = "常用工具ToolStripMenuItem";
+            this.常用工具ToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.常用工具ToolStripMenuItem.Text = "常用工具";
+            this.常用工具ToolStripMenuItem.Click += new System.EventHandler(this.常用工具ToolStripMenuItem_Click);
+            // 
+            // 代码生成器ToolStripMenuItem
+            // 
+            this.代码生成器ToolStripMenuItem.Name = "代码生成器ToolStripMenuItem";
+            this.代码生成器ToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.代码生成器ToolStripMenuItem.Text = "代码生成器";
+            this.代码生成器ToolStripMenuItem.Click += new System.EventHandler(this.代码生成器ToolStripMenuItem_Click);
             // 
             // helpMenu
             // 
@@ -530,28 +555,12 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(32, 17);
             this.toolStripStatusLabel.Text = "状态";
             // 
-            // 工具箱ToolStripMenuItem
+            // 生成MVC5框架ToolStripMenuItem
             // 
-            this.工具箱ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.常用工具ToolStripMenuItem,
-            this.代码生成器ToolStripMenuItem});
-            this.工具箱ToolStripMenuItem.Name = "工具箱ToolStripMenuItem";
-            this.工具箱ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
-            this.工具箱ToolStripMenuItem.Text = "工具箱";
-            // 
-            // 常用工具ToolStripMenuItem
-            // 
-            this.常用工具ToolStripMenuItem.Name = "常用工具ToolStripMenuItem";
-            this.常用工具ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.常用工具ToolStripMenuItem.Text = "常用工具";
-            this.常用工具ToolStripMenuItem.Click += new System.EventHandler(this.常用工具ToolStripMenuItem_Click);
-            // 
-            // 代码生成器ToolStripMenuItem
-            // 
-            this.代码生成器ToolStripMenuItem.Name = "代码生成器ToolStripMenuItem";
-            this.代码生成器ToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.代码生成器ToolStripMenuItem.Text = "代码生成器";
-            this.代码生成器ToolStripMenuItem.Click += new System.EventHandler(this.代码生成器ToolStripMenuItem_Click);
+            this.生成MVC5框架ToolStripMenuItem.Name = "生成MVC5框架ToolStripMenuItem";
+            this.生成MVC5框架ToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.生成MVC5框架ToolStripMenuItem.Text = "生成MVC5框架";
+            this.生成MVC5框架ToolStripMenuItem.Click += new System.EventHandler(this.生成MVC5框架ToolStripMenuItem_Click);
             // 
             // MDIMain
             // 
@@ -634,6 +643,7 @@
         private System.Windows.Forms.ToolStripMenuItem 工具箱ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 常用工具ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 代码生成器ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 生成MVC5框架ToolStripMenuItem;
     }
 }
 
