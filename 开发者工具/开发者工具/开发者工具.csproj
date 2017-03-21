@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateMvc\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\PageCommonTool.xaml.cs">
       <DependentUpon>PageCommonTool.xaml</DependentUpon>
     </Compile>
@@ -81,6 +84,10 @@
     <Compile Include="Tools\PageUnit.xaml.cs">
       <DependentUpon>PageUnit.xaml</DependentUpon>
     </Compile>
+    <Page Include="CreateMvc\Window1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Tools\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -146,6 +153,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App_Data\Template\EF\AppDbContext.te" />
+    <None Include="App_Data\Template\EF\BaseRepository.te" />
+    <None Include="App_Data\Template\EF\BaseService.te" />
+    <None Include="App_Data\Template\EF\ContextFactory.te" />
+    <None Include="App_Data\Template\EF\IBaseRepository.te" />
+    <None Include="App_Data\Template\EF\IBaseService.te" />
+    <None Include="App_Data\Template\EF\RepositoryFactory.te" />
+    <None Include="App_Data\Template\Linq\AppDbContext.te" />
+    <None Include="App_Data\Template\Linq\BaseRepository.te" />
+    <None Include="App_Data\Template\Linq\BaseService.te" />
+    <None Include="App_Data\Template\Linq\ContextFactory.te" />
+    <None Include="App_Data\Template\Linq\IBaseRepository.te" />
+    <None Include="App_Data\Template\Linq\IBaseService.te" />
+    <None Include="App_Data\Template\Linq\RepositoryFactory.te" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -160,5 +181,6 @@
       <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

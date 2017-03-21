@@ -5,23 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:开发者工具.CreateMvc"
         mc:Ignorable="d"
-        Title="创建MVC5模板" Height="322" Width="484">
+        Title="创建MVC5模板" Height="402" Width="684" Loaded="Window_Loaded">
     <Grid>
         <Button x:Name="btnAll" Content="生成全部" HorizontalAlignment="Left" Margin="200,258,0,0" VerticalAlignment="Top" Width="75" Click="btnAll_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="数据接口命名空间" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtIdalPath" HorizontalAlignment="Left" Height="23" Margin="135,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnSelect" Content="选择保存路径" HorizontalAlignment="Left" Margin="115,202,0,0" VerticalAlignment="Top" Width="75" Click="btnSelect_Click"/>
-        <TextBox x:Name="txtSaveDir" HorizontalAlignment="Left" Height="23" Margin="211,202,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="169"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="数据层命名空间" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtDalPath" HorizontalAlignment="Left" Height="23" Margin="125,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="22,85,0,0" TextWrapping="Wrap" Text="实体类命名空间" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtModelsPath" HorizontalAlignment="Left" Height="23" Margin="125,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="22,135,0,0" TextWrapping="Wrap" Text="数据库连接字符串配置节名称" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtContext" HorizontalAlignment="Left" Height="23" Margin="125,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="275,25,0,0" TextWrapping="Wrap" Text="业务接口命名空间" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtIbllPath" HorizontalAlignment="Left" Height="23" Margin="350,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBlock HorizontalAlignment="Left" Margin="255,65,0,0" TextWrapping="Wrap" Text="业务层命名空间" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBllPath" HorizontalAlignment="Left" Height="23" Margin="335,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="82,18,0,0" TextWrapping="Wrap" Text="数据接口命名空间" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtIdalPath" HorizontalAlignment="Left" Height="23" Margin="197,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnSelect" Content="选择保存路径" HorizontalAlignment="Left" Margin="22,156,0,0" VerticalAlignment="Top" Width="88" Click="btnSelect_Click"/>
+        <TextBox x:Name="txtSaveDir" HorizontalAlignment="Left" Height="23" Margin="131,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <TextBlock HorizontalAlignment="Left" Margin="94,54,0,0" TextWrapping="Wrap" Text="数据层命名空间" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtDalPath" HorizontalAlignment="Left" Height="23" Margin="197,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="94,89,0,0" TextWrapping="Wrap" Text="实体类命名空间" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtModelsPath" HorizontalAlignment="Left" Height="23" Margin="197,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="22,118,0,0" TextWrapping="Wrap" Text="数据库连接字符串配置节名称" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtContext" HorizontalAlignment="Left" Height="23" Margin="197,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="335,18,0,0" TextWrapping="Wrap" Text="业务接口命名空间" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtIbllPath" HorizontalAlignment="Left" Height="23" Margin="447,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBlock HorizontalAlignment="Left" Margin="347,53,0,0" TextWrapping="Wrap" Text="业务层命名空间" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBllPath" HorizontalAlignment="Left" Height="23" Margin="447,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <GroupBox Header="" HorizontalAlignment="Left" Height="58" Margin="30,182,0,0" VerticalAlignment="Top" Width="287">
+            <Grid>
+                <RadioButton x:Name="rbLinq" Content="Linq to SQL" HorizontalAlignment="Left" Margin="16,10,0,0" VerticalAlignment="Top"/>
+                <RadioButton x:Name="rbEf" Content="EF6" HorizontalAlignment="Left" Margin="146,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
+            </Grid>
+        </GroupBox>
 
     </Grid>
 </Window>
