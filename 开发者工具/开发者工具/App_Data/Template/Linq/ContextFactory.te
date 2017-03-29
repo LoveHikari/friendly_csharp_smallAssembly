@@ -12,12 +12,12 @@ namespace ${DalPath}
         /// 获取当前数据上下文
         /// </summary>
         /// <returns></returns>
-        public static AppDbContext GetCurrentContext()
+        public static AppDataContext GetCurrentContext()
         {
-            AppDbContext nContext = CallContext.GetData("${Context}") as AppDbContext;
+            AppDataContext nContext = CallContext.GetData("${Context}") as AppDataContext;
             if (nContext == null)
             {
-                nContext = new AppDbContext();
+                nContext = new AppDataContext();
                 CallContext.SetData("${Context}", nContext);
             }
             return nContext;

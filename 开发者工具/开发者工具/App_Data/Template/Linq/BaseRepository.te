@@ -11,7 +11,7 @@ namespace ${DalPath}
     /// </summary>
     public class BaseRepository<T> where T : class
     {
-        protected DbAppDataContext NContext = ContextFactory.GetCurrentContext();
+        protected AppDataContext NContext = ContextFactory.GetCurrentContext();
 
         #region 方法
 

@@ -11,7 +11,7 @@ namespace ${DalPath}
     /// <typeparam name="T">类型</typeparam>
     public class BaseRepository<T> : IBaseRepository<T> where T : class
     {
-        protected CosDbContext NContext = ContextFactory.GetCurrentContext();
+        protected AppDbContext NContext = ContextFactory.GetCurrentContext();
 
         #region 方法
 

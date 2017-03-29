@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using 开发者工具.CreateCode;
 
 namespace 开发者工具
 {
@@ -120,7 +121,9 @@ namespace 开发者工具
 
         private void 代码生成器ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            CreateCode.Form1 form1 = new CreateCode.Form1();
+            form1.MdiParent = this;
+            form1.Show();
         }
 
         private void 生成MVC5框架ToolStripMenuItem_Click(object sender, EventArgs e)

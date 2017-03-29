@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Database" EntityNamespace="Models" ContextNamespace="DBUtility" Class="AppDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=E:\新建文件夹\GitHub\friendly_csharp_smallAssembly\开发者工具\开发者工具\App_Data\Database.mdf;Integrated Security=True" SettingsObjectName="DBUtility.Properties.Settings" SettingsPropertyName="DatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.dataBaseConfig" Member="DataBaseConfig">
+    <Type Name="DataBaseConfig">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ConnStr" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="DatabaseName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="ProviderName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ServerName" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Uid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Pwd" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.namespaceConfig" Member="NamespaceConfig">
+    <Type Name="NamespaceConfig">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ModelPath" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DalPath" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BllPath" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModelSuffix" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DalSuffix" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="BllSuffix" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

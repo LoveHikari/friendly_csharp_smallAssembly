@@ -6,9 +6,9 @@ namespace ${DalPath}
     /// <summary>
     /// 数据上下文
     /// </summary>
-    public class AppDbContext : DbContext
+    public class AppDataContext : DataContext
     {
-        public AppDbContext() : base("${Context}")
+        public AppDataContext() : base("${Context}")
         {
         }
         ///// <summary>

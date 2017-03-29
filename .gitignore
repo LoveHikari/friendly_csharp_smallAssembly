@@ -2,21 +2,19 @@
 # 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
 ################################################################################
 
-/代码生成器/Builder/obj
-/代码生成器/Builder/bin
-/代码生成器/Common/bin
-/代码生成器/Common/obj
-/代码生成器/DBUtility/bin
-/代码生成器/DBUtility/obj
-/代码生成器/Model/bin
-/代码生成器/Model/obj
-/代码生成器/代码生成器/bin
-/代码生成器/代码生成器/obj
-/代码生成器/IBuilder/bin
-/代码生成器/IBuilder/obj
+/开发者工具/Builder/bin
+/开发者工具/Builder/obj
 /开发者工具/Common/bin
 /开发者工具/Common/obj
+/开发者工具/DBUtility/bin
+/开发者工具/DBUtility/obj
+/开发者工具/IBuilder/bin
+/开发者工具/IBuilder/obj
+/开发者工具/Models/bin
+/开发者工具/Models/obj
 /开发者工具/Utilities/bin
 /开发者工具/Utilities/obj
 /开发者工具/开发者工具/bin
 /开发者工具/开发者工具/obj
+/开发者工具/.vs
+/开发者工具/packages
