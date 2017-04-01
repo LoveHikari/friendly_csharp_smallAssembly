@@ -33,7 +33,12 @@ namespace 开发者工具.CreateCode
                 //fcs.ShowDialog(this.Owner);
                 //fcs.Dispose();
             }
-            
+            if (this.rbMySql.Checked)
+            {
+                FrmConnMySQL fcm = new FrmConnMySQL();
+                fcm.ShowDialog(this.Owner);
+                fcm.Dispose();
+            }
             this.Dispose();
         }
         /// <summary>

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="BLL\MySqlBll.cs" />
     <Compile Include="ContextFactory.cs" />
     <Compile Include="DataBaseConfigRepository.cs" />
     <Compile Include="DbApp.designer.cs">

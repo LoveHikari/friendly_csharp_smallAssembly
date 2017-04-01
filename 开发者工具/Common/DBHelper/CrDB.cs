@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.Common;
 using System.Web;
 using System.Xml;
+using MySql.Data.MySqlClient;
 
 namespace Common.DBHelper
 {

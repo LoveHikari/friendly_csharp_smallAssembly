@@ -66,6 +66,7 @@ namespace 开发者工具.CreateCode
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             //Environment.Exit(Environment.ExitCode);
+            this.Dispose();
         }
 
         #region 事件
@@ -114,6 +115,9 @@ namespace 开发者工具.CreateCode
                 case "System.Data.SQLite":
                     dt = DBUtility.SQLiteBll.GetColumnTable(tableName);
                     break;
+                case "MySql.Data.MySqlClient":
+                    dt = DBUtility.BLL.MySqlBll.Instance.GetColumnTable(DataBaseConfig.DatabaseName,tableName);
+                    break;
             }
 
             this.dataGridView1.DataSource = dt;
@@ -156,6 +160,10 @@ namespace 开发者工具.CreateCode
                 case "System.Data.SQLite":
                     columns = DBUtility.SQLiteBll.GetTableColumnInfo(tableName);
                     className += "BuilderDALForSqlite";
+                    break;
+                case "MySql.Data.MySqlClient":
+                    columns = DBUtility.BLL.MySqlBll.Instance.GetTableColumnInfo(DataBaseConfig.DatabaseName,tableName);
+                    className += "BuilderDALForSqlServer";
                     break;
                 default:
                     columns = DBUtility.SqlServerBll.Instance.GetTableColumnInfo(tableName);
@@ -244,6 +252,9 @@ namespace 开发者工具.CreateCode
             {
                 case "System.Data.SQLite":
                     dt = DBUtility.SQLiteBll.GetAllTable();
+                    break;
+                case "MySql.Data.MySqlClient":
+                    dt = DBUtility.BLL.MySqlBll.Instance.GetAllTable();
                     break;
                 default:
                     dt = DBUtility.SqlServerBll.Instance.GetAllTable();

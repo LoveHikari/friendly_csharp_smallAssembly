@@ -29,15 +29,17 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbSqlite = new System.Windows.Forms.RadioButton();
+            this.rbSqlServer = new System.Windows.Forms.RadioButton();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.rbSqlServer = new System.Windows.Forms.RadioButton();
-            this.rbSqlite = new System.Windows.Forms.RadioButton();
+            this.rbMySql = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.rbMySql);
             this.groupBox1.Controls.Add(this.rbSqlite);
             this.groupBox1.Controls.Add(this.rbSqlServer);
             this.groupBox1.Location = new System.Drawing.Point(16, 24);
@@ -46,6 +48,29 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "选择数据源类型";
+            // 
+            // rbSqlite
+            // 
+            this.rbSqlite.AutoSize = true;
+            this.rbSqlite.Location = new System.Drawing.Point(144, 32);
+            this.rbSqlite.Name = "rbSqlite";
+            this.rbSqlite.Size = new System.Drawing.Size(59, 16);
+            this.rbSqlite.TabIndex = 1;
+            this.rbSqlite.TabStop = true;
+            this.rbSqlite.Text = "SQLite";
+            this.rbSqlite.UseVisualStyleBackColor = true;
+            // 
+            // rbSqlServer
+            // 
+            this.rbSqlServer.AutoSize = true;
+            this.rbSqlServer.Checked = true;
+            this.rbSqlServer.Location = new System.Drawing.Point(24, 32);
+            this.rbSqlServer.Name = "rbSqlServer";
+            this.rbSqlServer.Size = new System.Drawing.Size(83, 16);
+            this.rbSqlServer.TabIndex = 0;
+            this.rbSqlServer.TabStop = true;
+            this.rbSqlServer.Text = "SQL Server";
+            this.rbSqlServer.UseVisualStyleBackColor = true;
             // 
             // btnNext
             // 
@@ -67,28 +92,16 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // rbSqlServer
+            // rbMySql
             // 
-            this.rbSqlServer.AutoSize = true;
-            this.rbSqlServer.Checked = true;
-            this.rbSqlServer.Location = new System.Drawing.Point(24, 32);
-            this.rbSqlServer.Name = "rbSqlServer";
-            this.rbSqlServer.Size = new System.Drawing.Size(83, 16);
-            this.rbSqlServer.TabIndex = 0;
-            this.rbSqlServer.TabStop = true;
-            this.rbSqlServer.Text = "SQL Server";
-            this.rbSqlServer.UseVisualStyleBackColor = true;
-            // 
-            // rbSqlite
-            // 
-            this.rbSqlite.AutoSize = true;
-            this.rbSqlite.Location = new System.Drawing.Point(144, 32);
-            this.rbSqlite.Name = "rbSqlite";
-            this.rbSqlite.Size = new System.Drawing.Size(59, 16);
-            this.rbSqlite.TabIndex = 1;
-            this.rbSqlite.TabStop = true;
-            this.rbSqlite.Text = "SQLite";
-            this.rbSqlite.UseVisualStyleBackColor = true;
+            this.rbMySql.AutoSize = true;
+            this.rbMySql.Location = new System.Drawing.Point(24, 65);
+            this.rbMySql.Name = "rbMySql";
+            this.rbMySql.Size = new System.Drawing.Size(53, 16);
+            this.rbMySql.TabIndex = 2;
+            this.rbMySql.TabStop = true;
+            this.rbMySql.Text = "MySQL";
+            this.rbMySql.UseVisualStyleBackColor = true;
             // 
             // FrmSelectDatabase
             // 
@@ -114,5 +127,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.RadioButton rbSqlite;
         private System.Windows.Forms.RadioButton rbSqlServer;
+        private System.Windows.Forms.RadioButton rbMySql;
     }
 }

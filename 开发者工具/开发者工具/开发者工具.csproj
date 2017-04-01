@@ -55,6 +55,9 @@
     <Reference Include="DotNet.Utilities">
       <HintPath>..\引用dll\DotNet.Utilities.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\引用dll\MySql\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -83,6 +86,12 @@
     </Compile>
     <Compile Include="CreateCode\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCode\FrmConnMySQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCode\FrmConnMySQL.Designer.cs">
+      <DependentUpon>FrmConnMySQL.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateCode\FrmConnServer.cs">
       <SubType>Form</SubType>
@@ -181,6 +190,12 @@
     </Compile>
     <EmbeddedResource Include="CreateCode\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCode\FrmConnMySQL.resx">
+      <DependentUpon>FrmConnMySQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateCode\FrmSelectDatabase.resx">
+      <DependentUpon>FrmSelectDatabase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDIMain.resx">
       <DependentUpon>MDIMain.cs</DependentUpon>
