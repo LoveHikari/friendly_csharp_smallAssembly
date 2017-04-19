@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2908B319-CB7F-48D6-9C2F-4765F48642D3}</ProjectGuid>
+    <ProjectGuid>{559DEDBE-2793-4E86-B05C-B2D00F07E882}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>开发者工具</RootNamespace>
     <AssemblyName>开发者工具</AssemblyName>
@@ -52,13 +52,14 @@
     <StartupObject>开发者工具.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNet.Utilities">
-      <HintPath>..\引用dll\DotNet.Utilities.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data">
-      <HintPath>..\引用dll\MySql\MySql.Data.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -81,32 +82,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="CreateCode\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateCode\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateCode\FrmConnMySQL.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateCode\FrmConnMySQL.Designer.cs">
-      <DependentUpon>FrmConnMySQL.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateCode\FrmConnServer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateCode\FrmConnServer.Designer.cs">
-      <DependentUpon>FrmConnServer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateCode\FrmSelectDatabase.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateCode\FrmSelectDatabase.Designer.cs">
-      <DependentUpon>FrmSelectDatabase.cs</DependentUpon>
-    </Compile>
     <Compile Include="CreateMvc\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\PageCommonTool.xaml.cs">
       <DependentUpon>PageCommonTool.xaml</DependentUpon>
@@ -130,7 +110,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Tools\MainWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -138,33 +118,55 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Tools\MainWindow.xaml.cs">
+    <Compile Include="CreateCode\Builder\BuilderBLL.cs" />
+    <Compile Include="CreateCode\Builder\BuilderDAL.cs" />
+    <Compile Include="CreateCode\Builder\BuilderDALForSqlite.cs" />
+    <Compile Include="CreateCode\Builder\BuilderDALForSqlServer .cs" />
+    <Compile Include="CreateCode\Builder\BuilderModel.cs" />
+    <Compile Include="CreateCode\Builder\MVC\BuilderBLL.cs" />
+    <Compile Include="CreateCode\Builder\MVC\BuilderDAL.cs" />
+    <Compile Include="CreateCode\Builder\MVC\BuilderIBLL.cs" />
+    <Compile Include="CreateCode\Builder\MVC\BuilderIDAL.cs" />
+    <Compile Include="CreateCode\Builder\MVC\BuilderModel.cs" />
+    <Compile Include="CreateCode\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCode\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateCode\Models\Config.cs" />
+    <Compile Include="CreateCode\Models\Parameter.cs" />
+    <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Tools\PageCommonTool.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Tools\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Tools\PageCommonTool.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Tools\PageEncode.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Tools\PageEncrypt.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Tools\PageEntity.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Tools\PageTransfer.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Tools\PageUnit.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -191,12 +193,6 @@
     <EmbeddedResource Include="CreateCode\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateCode\FrmConnMySQL.resx">
-      <DependentUpon>FrmConnMySQL.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreateCode\FrmSelectDatabase.resx">
-      <DependentUpon>FrmSelectDatabase.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MDIMain.resx">
       <DependentUpon>MDIMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -218,6 +214,7 @@
     <None Include="App_Data\Template\Linq\IBaseRepository.te" />
     <None Include="App_Data\Template\Linq\IBaseService.te" />
     <None Include="App_Data\Template\Linq\RepositoryFactory.te" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -227,21 +224,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Builder\Builder.csproj">
-      <Project>{09d0cf59-d25c-49ff-9272-29737bc25c3d}</Project>
-      <Name>Builder</Name>
+    <ProjectReference Include="..\Win.Common\Win.Common.csproj">
+      <Project>{75629687-9d42-494a-b255-792d9a782bcb}</Project>
+      <Name>Win.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{351001f4-3e86-44ee-8725-ac779a24b6f7}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\Win.DAL\Win.DAL.csproj">
+      <Project>{b37cab8d-d909-40d1-8c61-f1973edee71b}</Project>
+      <Name>Win.DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
-      <Project>{182eeb79-cc84-4514-9b86-6ba881fb45dc}</Project>
-      <Name>DBUtility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Models\Models.csproj">
-      <Project>{22427a06-a953-42c8-8200-7363cdc4adb8}</Project>
-      <Name>Models</Name>
+    <ProjectReference Include="..\Win.Models\Win.Models.csproj">
+      <Project>{a343d3bd-6826-45d4-b89a-6a11178b627a}</Project>
+      <Name>Win.Models</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

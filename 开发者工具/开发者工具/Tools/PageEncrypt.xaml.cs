@@ -34,7 +34,7 @@ namespace 开发者工具.Tools
         private void btnMd5_Click(object sender, RoutedEventArgs e)
         {
             TextBlock tb = (TextBlock)this.cbMD5Encoding.SelectedItem;
-            this.txtDestMd5.Text = rb16.IsChecked == true ? Common.DEncryptHelper.MD5Encrypt16(this.txtSourceMd5.Text, tb.Text) : Common.DEncryptHelper.MD5Encrypt32(this.txtSourceMd5.Text, tb.Text);
+            this.txtDestMd5.Text = rb16.IsChecked == true ? Win.Common.DEncryptHelper.MD5Encrypt16(this.txtSourceMd5.Text, tb.Text) : Win.Common.DEncryptHelper.MD5Encrypt32(this.txtSourceMd5.Text, tb.Text);
         }
 
         #endregion

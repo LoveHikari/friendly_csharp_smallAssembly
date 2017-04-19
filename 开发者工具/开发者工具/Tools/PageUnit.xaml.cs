@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DotNet.Utilities;
+using Win.Common;
 
 namespace 开发者工具.Tools
 {

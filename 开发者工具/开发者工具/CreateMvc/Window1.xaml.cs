@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Win.Common;
 
 namespace 开发者工具.CreateMvc
 {
@@ -84,10 +85,10 @@ namespace 开发者工具.CreateMvc
             string iDalPath = this.txtIdalPath.Text;
             
             string filePath = System.IO.Path.Combine(Environment.CurrentDirectory, "App_Data\\Template",dir2,"IBaseRepository.te");
-            string s = DotNet.Utilities.FileHelper.ReadFile(filePath);
+            string s = Win.Common.FileHelper.ReadFile(filePath);
             s = s.Replace("${IdalPath}", iDalPath);
             filePath = System.IO.Path.Combine(dir, "IDAL\\IBaseRepository.cs");
-            DotNet.Utilities.FileHelper.WriteFile(filePath, s);
+            FileHelper.WriteFile(filePath, s);
         }
 
         public void CreateDAL(string dir, string dir2)
@@ -98,28 +99,28 @@ namespace 开发者工具.CreateMvc
             string context = this.txtContext.Text;
 
             string filePath = System.IO.Path.Combine(Environment.CurrentDirectory, "App_Data\\Template", dir2, "BaseRepository.te");
-            string s = DotNet.Utilities.FileHelper.ReadFile(filePath);
+            string s = FileHelper.ReadFile(filePath);
             s = s.Replace("${IdalPath}", iDalPath).Replace("${DalPath}", dalPath);
             filePath = System.IO.Path.Combine(dir, "DAL\\BaseRepository.cs");
-            DotNet.Utilities.FileHelper.WriteFile(filePath, s);
+            FileHelper.WriteFile(filePath, s);
 
             filePath = System.IO.Path.Combine(Environment.CurrentDirectory, "App_Data\\Template", dir2, "AppDbContext.te");
-            s = DotNet.Utilities.FileHelper.ReadFile(filePath);
+            s = FileHelper.ReadFile(filePath);
             s = s.Replace("${ModelsPath}", modelsPath).Replace("${DalPath}", dalPath).Replace("${Context}", context);
             filePath = System.IO.Path.Combine(dir, "DAL\\AppDbContext.cs");
-            DotNet.Utilities.FileHelper.WriteFile(filePath, s);
+            FileHelper.WriteFile(filePath, s);
 
             filePath = System.IO.Path.Combine(Environment.CurrentDirectory, "App_Data\\Template", dir2, "ContextFactory.te");
-            s = DotNet.Utilities.FileHelper.ReadFile(filePath);
+            s = FileHelper.ReadFile(filePath);
             s = s.Replace("${DalPath}", dalPath).Replace("${Context}", context);
             filePath = System.IO.Path.Combine(dir, "DAL\\ContextFactory.cs");
-            DotNet.Utilities.FileHelper.WriteFile(filePath, s);
+            FileHelper.WriteFile(filePath, s);
 
             filePath = System.IO.Path.Combine(Environment.CurrentDirectory, "App_Data\\Template", dir2, "RepositoryFactory.te");
-            s = DotNet.Utilities.FileHelper.ReadFile(filePath);
+            s = FileHelper.ReadFile(filePath);
             s = s.Replace("${DalPath}", dalPath).Replace("${Context}", context).Replace("${IdalPath}", iDalPath);
             filePath = System.IO.Path.Combine(dir, "DAL\\RepositoryFactory.cs");
-            DotNet.Utilities.FileHelper.WriteFile(filePath, s);
+            FileHelper.WriteFile(filePath, s);
         }
 
         public void CreateIBLL(string dir, string dir2)
@@ -130,10 +131,10 @@ namespace 开发者工具.CreateMvc
                 System.IO.Directory.CreateDirectory(dir);
             }
             string filePath = System.IO.Path.Combine(Environment.CurrentDirectory, "App_Data\\Template", dir2, "IBaseService.te");
-            string s = DotNet.Utilities.FileHelper.ReadFile(filePath);
+            string s = FileHelper.ReadFile(filePath);
             s = s.Replace("${IbllPath}", iBllPath);
             filePath = System.IO.Path.Combine(dir, "IBLL\\IBaseService.cs");
-            DotNet.Utilities.FileHelper.WriteFile(filePath, s);
+            FileHelper.WriteFile(filePath, s);
         }
         public void CreateBLL(string dir, string dir2)
         {
@@ -145,10 +146,10 @@ namespace 开发者工具.CreateMvc
                 System.IO.Directory.CreateDirectory(dir);
             }
             string filePath = System.IO.Path.Combine(Environment.CurrentDirectory, "App_Data\\Template", dir2, "BaseService.te");
-            string s = DotNet.Utilities.FileHelper.ReadFile(filePath);
+            string s = FileHelper.ReadFile(filePath);
             s = s.Replace("${IbllPath}", iBllPath).Replace("${IdalPath}", iDalPath).Replace("${BllPath}", bllPath);
             filePath = System.IO.Path.Combine(dir, "BLL\\BaseService.cs");
-            DotNet.Utilities.FileHelper.WriteFile(filePath, s);
+            FileHelper.WriteFile(filePath, s);
         }
 
 

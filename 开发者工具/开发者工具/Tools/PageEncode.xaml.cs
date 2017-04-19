@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DotNet.Utilities;
+using Win.Common;
 
 namespace 开发者工具.Tools
 {
@@ -99,7 +99,7 @@ namespace 开发者工具.Tools
                     for (int i = 0; i < utf8Array.Length; i++)
                     {
                         int code = (int)(utf8Array[i]);
-                        string str = DotNet.Utilities.ConvertHelper.ConvertBase(code.ToString(), 10, 16).PadLeft(4, '0');
+                        string str = Win.Common.ConvertHelper.ConvertBase(code.ToString(), 10, 16).PadLeft(4, '0');
                         utf8Str += "\\u" + str;
                     }
                     this.txtDestUnicode.Text = utf8Str;
@@ -110,7 +110,7 @@ namespace 开发者工具.Tools
                     for (int i = 0; i < unicodeArray.Length; i++)
                     {
                         int code = (int)(unicodeArray[i]);
-                        string str = DotNet.Utilities.ConvertHelper.ConvertBase(code.ToString(), 10, 16).PadLeft(4, '0');
+                        string str = ConvertHelper.ConvertBase(code.ToString(), 10, 16).PadLeft(4, '0');
                         unicodeStr += "\\u" + str;
                     }
                     this.txtDestUnicode.Text = unicodeStr;

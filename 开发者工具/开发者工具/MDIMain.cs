@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using 开发者工具.CreateCode;
 
 namespace 开发者工具
 {
@@ -105,35 +104,22 @@ namespace 开发者工具
             }
         }
 
-        private void MDIMain_Load(object sender, EventArgs e)
-        {
-
-        }
-
         #region 工具箱
 
         private void 常用工具ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Tools.MainWindow mainWindow = new Tools.MainWindow();
-            mainWindow.ShowDialog();
-            mainWindow.Close();
+            Tools.MainWindow mw = new Tools.MainWindow();
+            mw.ShowDialog();
+            mw.Close();
         }
-
         private void 代码生成器ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CreateCode.Form1 form1 = new CreateCode.Form1();
             form1.MdiParent = this;
             form1.Show();
         }
-
-        private void 生成MVC5框架ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreateMvc.Window1 window1 = new CreateMvc.Window1();
-            window1.ShowDialog();
-            window1.Close();
-        }
-
         #endregion
+
 
     }
 }

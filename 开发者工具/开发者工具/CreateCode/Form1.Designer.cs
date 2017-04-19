@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbtnAddServer = new System.Windows.Forms.ToolStripButton();
@@ -120,6 +121,7 @@
             // tsbtnAddServer
             // 
             this.tsbtnAddServer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtnAddServer.Image = ((System.Drawing.Image)(resources.GetObject("tsbtnAddServer.Image")));
             this.tsbtnAddServer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbtnAddServer.Name = "tsbtnAddServer";
             this.tsbtnAddServer.Size = new System.Drawing.Size(23, 22);
@@ -697,7 +699,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbtnAddServer;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 单表代码生成器ToolStripMenuItem;
@@ -749,5 +750,6 @@
         private System.Windows.Forms.RadioButton rbContext2;
         private System.Windows.Forms.RadioButton rbBll2;
         private System.Windows.Forms.RadioButton rbIbll2;
+        private System.Windows.Forms.ToolStripButton tsbtnAddServer;
     }
 }
