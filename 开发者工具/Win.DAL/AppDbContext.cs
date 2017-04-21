@@ -12,7 +12,7 @@ namespace Win.DAL
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            throw new UnintentionalCodeFirstException();
+            //throw new UnintentionalCodeFirstException();
         }
 
         public virtual IDbSet<DataBaseConfig> DataBaseConfigs { get; set; }
