@@ -77,7 +77,7 @@
             this.gbCodeForlayers = new System.Windows.Forms.GroupBox();
             this.rbBll = new System.Windows.Forms.RadioButton();
             this.rbDal = new System.Windows.Forms.RadioButton();
-            this.rbModel = new System.Windows.Forms.RadioButton();
+            this.rbModels = new System.Windows.Forms.RadioButton();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtCode = new System.Windows.Forms.TextBox();
@@ -158,7 +158,7 @@
             this.tabControl1.Location = new System.Drawing.Point(214, 50);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(891, 478);
+            this.tabControl1.Size = new System.Drawing.Size(891, 547);
             this.tabControl1.TabIndex = 5;
             // 
             // tabPage1
@@ -173,7 +173,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(883, 452);
+            this.tabPage1.Size = new System.Drawing.Size(883, 521);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "生成设置";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -187,9 +187,9 @@
             this.gbCodeForMvc.Controls.Add(this.rbDal2);
             this.gbCodeForMvc.Controls.Add(this.rbIDal2);
             this.gbCodeForMvc.Controls.Add(this.rbModels2);
-            this.gbCodeForMvc.Location = new System.Drawing.Point(316, 373);
+            this.gbCodeForMvc.Location = new System.Drawing.Point(6, 443);
             this.gbCodeForMvc.Name = "gbCodeForMvc";
-            this.gbCodeForMvc.Size = new System.Drawing.Size(489, 73);
+            this.gbCodeForMvc.Size = new System.Drawing.Size(871, 50);
             this.gbCodeForMvc.TabIndex = 16;
             this.gbCodeForMvc.TabStop = false;
             this.gbCodeForMvc.Text = "代码类型";
@@ -197,7 +197,7 @@
             // radioButton10
             // 
             this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(356, 26);
+            this.radioButton10.Location = new System.Drawing.Point(392, 21);
             this.radioButton10.Name = "radioButton10";
             this.radioButton10.Size = new System.Drawing.Size(101, 16);
             this.radioButton10.TabIndex = 6;
@@ -208,7 +208,7 @@
             // rbContext2
             // 
             this.rbContext2.AutoSize = true;
-            this.rbContext2.Location = new System.Drawing.Point(224, 26);
+            this.rbContext2.Location = new System.Drawing.Point(321, 21);
             this.rbContext2.Name = "rbContext2";
             this.rbContext2.Size = new System.Drawing.Size(65, 16);
             this.rbContext2.TabIndex = 5;
@@ -219,7 +219,7 @@
             // rbBll2
             // 
             this.rbBll2.AutoSize = true;
-            this.rbBll2.Location = new System.Drawing.Point(106, 54);
+            this.rbBll2.Location = new System.Drawing.Point(266, 21);
             this.rbBll2.Name = "rbBll2";
             this.rbBll2.Size = new System.Drawing.Size(41, 16);
             this.rbBll2.TabIndex = 4;
@@ -230,7 +230,7 @@
             // rbIbll2
             // 
             this.rbIbll2.AutoSize = true;
-            this.rbIbll2.Location = new System.Drawing.Point(55, 54);
+            this.rbIbll2.Location = new System.Drawing.Point(200, 21);
             this.rbIbll2.Name = "rbIbll2";
             this.rbIbll2.Size = new System.Drawing.Size(47, 16);
             this.rbIbll2.TabIndex = 3;
@@ -241,7 +241,7 @@
             // rbDal2
             // 
             this.rbDal2.AutoSize = true;
-            this.rbDal2.Location = new System.Drawing.Point(159, 26);
+            this.rbDal2.Location = new System.Drawing.Point(147, 21);
             this.rbDal2.Name = "rbDal2";
             this.rbDal2.Size = new System.Drawing.Size(41, 16);
             this.rbDal2.TabIndex = 2;
@@ -252,7 +252,7 @@
             // rbIDal2
             // 
             this.rbIDal2.AutoSize = true;
-            this.rbIDal2.Location = new System.Drawing.Point(106, 28);
+            this.rbIDal2.Location = new System.Drawing.Point(94, 21);
             this.rbIDal2.Name = "rbIDal2";
             this.rbIDal2.Size = new System.Drawing.Size(47, 16);
             this.rbIDal2.TabIndex = 1;
@@ -264,7 +264,7 @@
             // 
             this.rbModels2.AutoSize = true;
             this.rbModels2.Checked = true;
-            this.rbModels2.Location = new System.Drawing.Point(41, 28);
+            this.rbModels2.Location = new System.Drawing.Point(24, 21);
             this.rbModels2.Name = "rbModels2";
             this.rbModels2.Size = new System.Drawing.Size(59, 16);
             this.rbModels2.TabIndex = 0;
@@ -278,9 +278,9 @@
             this.gbArchitecture.Controls.Add(this.radioButton6);
             this.gbArchitecture.Controls.Add(this.radioButton5);
             this.gbArchitecture.Controls.Add(this.radioButton4);
-            this.gbArchitecture.Location = new System.Drawing.Point(50, 328);
+            this.gbArchitecture.Location = new System.Drawing.Point(6, 328);
             this.gbArchitecture.Name = "gbArchitecture";
-            this.gbArchitecture.Size = new System.Drawing.Size(562, 45);
+            this.gbArchitecture.Size = new System.Drawing.Size(871, 50);
             this.gbArchitecture.TabIndex = 15;
             this.gbArchitecture.TabStop = false;
             this.gbArchitecture.Text = "架构选择";
@@ -288,7 +288,7 @@
             // rbMvc
             // 
             this.rbMvc.AutoSize = true;
-            this.rbMvc.Location = new System.Drawing.Point(425, 17);
+            this.rbMvc.Location = new System.Drawing.Point(280, 21);
             this.rbMvc.Name = "rbMvc";
             this.rbMvc.Size = new System.Drawing.Size(65, 16);
             this.rbMvc.TabIndex = 3;
@@ -299,7 +299,7 @@
             // radioButton6
             // 
             this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(303, 19);
+            this.radioButton6.Location = new System.Drawing.Point(179, 20);
             this.radioButton6.Name = "radioButton6";
             this.radioButton6.Size = new System.Drawing.Size(95, 16);
             this.radioButton6.TabIndex = 2;
@@ -311,7 +311,7 @@
             // 
             this.radioButton5.AutoSize = true;
             this.radioButton5.Checked = true;
-            this.radioButton5.Location = new System.Drawing.Point(153, 22);
+            this.radioButton5.Location = new System.Drawing.Point(102, 21);
             this.radioButton5.Name = "radioButton5";
             this.radioButton5.Size = new System.Drawing.Size(71, 16);
             this.radioButton5.TabIndex = 1;
@@ -335,9 +335,9 @@
             this.groupBox4.Controls.Add(this.radioButton3);
             this.groupBox4.Controls.Add(this.radioButton2);
             this.groupBox4.Controls.Add(this.radioButton1);
-            this.groupBox4.Location = new System.Drawing.Point(29, 263);
+            this.groupBox4.Location = new System.Drawing.Point(6, 263);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(804, 60);
+            this.groupBox4.Size = new System.Drawing.Size(871, 50);
             this.groupBox4.TabIndex = 14;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "类型";
@@ -345,7 +345,7 @@
             // radioButton3
             // 
             this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(278, 17);
+            this.radioButton3.Location = new System.Drawing.Point(159, 22);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(65, 16);
             this.radioButton3.TabIndex = 2;
@@ -356,7 +356,7 @@
             // 
             this.radioButton2.AutoSize = true;
             this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(157, 19);
+            this.radioButton2.Location = new System.Drawing.Point(94, 22);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(59, 16);
             this.radioButton2.TabIndex = 1;
@@ -367,7 +367,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(35, 18);
+            this.radioButton1.Location = new System.Drawing.Point(24, 22);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(59, 16);
             this.radioButton1.TabIndex = 0;
@@ -381,9 +381,9 @@
             this.groupBox3.Controls.Add(this.btnCreateCode);
             this.groupBox3.Controls.Add(this.cbIdentityKey);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(29, 120);
+            this.groupBox3.Location = new System.Drawing.Point(6, 120);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(623, 50);
+            this.groupBox3.Size = new System.Drawing.Size(871, 50);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "操作";
@@ -452,16 +452,16 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(29, 176);
+            this.groupBox2.Location = new System.Drawing.Point(6, 176);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(804, 81);
+            this.groupBox2.Size = new System.Drawing.Size(871, 81);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "参数";
             // 
             // txtBllSuffix
             // 
-            this.txtBllSuffix.Location = new System.Drawing.Point(555, 52);
+            this.txtBllSuffix.Location = new System.Drawing.Point(562, 45);
             this.txtBllSuffix.Name = "txtBllSuffix";
             this.txtBllSuffix.Size = new System.Drawing.Size(100, 21);
             this.txtBllSuffix.TabIndex = 22;
@@ -470,7 +470,7 @@
             // 
             this.txtDalSuffix.Location = new System.Drawing.Point(349, 48);
             this.txtDalSuffix.Name = "txtDalSuffix";
-            this.txtDalSuffix.Size = new System.Drawing.Size(100, 21);
+            this.txtDalSuffix.Size = new System.Drawing.Size(102, 21);
             this.txtDalSuffix.TabIndex = 21;
             // 
             // txtModelSuffix
@@ -483,7 +483,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(485, 51);
+            this.label8.Location = new System.Drawing.Point(467, 49);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 12);
             this.label8.TabIndex = 19;
@@ -492,7 +492,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(258, 50);
+            this.label7.Location = new System.Drawing.Point(251, 51);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(89, 12);
             this.label7.TabIndex = 18;
@@ -501,7 +501,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(50, 48);
+            this.label6.Location = new System.Drawing.Point(45, 50);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 12);
             this.label6.TabIndex = 17;
@@ -509,21 +509,21 @@
             // 
             // txtDalPath
             // 
-            this.txtDalPath.Location = new System.Drawing.Point(346, 20);
+            this.txtDalPath.Location = new System.Drawing.Point(351, 20);
             this.txtDalPath.Name = "txtDalPath";
             this.txtDalPath.Size = new System.Drawing.Size(100, 21);
             this.txtDalPath.TabIndex = 16;
             // 
             // txtBllPath
             // 
-            this.txtBllPath.Location = new System.Drawing.Point(562, 20);
+            this.txtBllPath.Location = new System.Drawing.Point(562, 18);
             this.txtBllPath.Name = "txtBllPath";
             this.txtBllPath.Size = new System.Drawing.Size(100, 21);
             this.txtBllPath.TabIndex = 15;
             // 
             // txtModelPath
             // 
-            this.txtModelPath.Location = new System.Drawing.Point(145, 20);
+            this.txtModelPath.Location = new System.Drawing.Point(134, 19);
             this.txtModelPath.Name = "txtModelPath";
             this.txtModelPath.Size = new System.Drawing.Size(100, 21);
             this.txtModelPath.TabIndex = 14;
@@ -549,7 +549,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(45, 24);
+            this.label2.Location = new System.Drawing.Point(33, 23);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 12);
             this.label2.TabIndex = 11;
@@ -559,10 +559,10 @@
             // 
             this.gbCodeForlayers.Controls.Add(this.rbBll);
             this.gbCodeForlayers.Controls.Add(this.rbDal);
-            this.gbCodeForlayers.Controls.Add(this.rbModel);
-            this.gbCodeForlayers.Location = new System.Drawing.Point(49, 379);
+            this.gbCodeForlayers.Controls.Add(this.rbModels);
+            this.gbCodeForlayers.Location = new System.Drawing.Point(6, 381);
             this.gbCodeForlayers.Name = "gbCodeForlayers";
-            this.gbCodeForlayers.Size = new System.Drawing.Size(586, 58);
+            this.gbCodeForlayers.Size = new System.Drawing.Size(871, 50);
             this.gbCodeForlayers.TabIndex = 11;
             this.gbCodeForlayers.TabStop = false;
             this.gbCodeForlayers.Text = "代码类型";
@@ -570,7 +570,7 @@
             // rbBll
             // 
             this.rbBll.AutoSize = true;
-            this.rbBll.Location = new System.Drawing.Point(216, 33);
+            this.rbBll.Location = new System.Drawing.Point(133, 20);
             this.rbBll.Name = "rbBll";
             this.rbBll.Size = new System.Drawing.Size(41, 16);
             this.rbBll.TabIndex = 2;
@@ -580,31 +580,31 @@
             // rbDal
             // 
             this.rbDal.AutoSize = true;
-            this.rbDal.Location = new System.Drawing.Point(146, 33);
+            this.rbDal.Location = new System.Drawing.Point(83, 21);
             this.rbDal.Name = "rbDal";
             this.rbDal.Size = new System.Drawing.Size(41, 16);
             this.rbDal.TabIndex = 1;
             this.rbDal.Text = "DAL";
             this.rbDal.UseVisualStyleBackColor = true;
             // 
-            // rbModel
+            // rbModels
             // 
-            this.rbModel.AutoSize = true;
-            this.rbModel.Checked = true;
-            this.rbModel.Location = new System.Drawing.Point(42, 36);
-            this.rbModel.Name = "rbModel";
-            this.rbModel.Size = new System.Drawing.Size(53, 16);
-            this.rbModel.TabIndex = 0;
-            this.rbModel.TabStop = true;
-            this.rbModel.Text = "Model";
-            this.rbModel.UseVisualStyleBackColor = true;
+            this.rbModels.AutoSize = true;
+            this.rbModels.Checked = true;
+            this.rbModels.Location = new System.Drawing.Point(24, 21);
+            this.rbModels.Name = "rbModels";
+            this.rbModels.Size = new System.Drawing.Size(59, 16);
+            this.rbModels.TabIndex = 0;
+            this.rbModels.TabStop = true;
+            this.rbModels.Text = "Models";
+            this.rbModels.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(799, 107);
+            this.dataGridView1.Size = new System.Drawing.Size(871, 107);
             this.dataGridView1.TabIndex = 1;
             // 
             // tabPage2
@@ -631,7 +631,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(156, 24);
+            this.label5.Location = new System.Drawing.Point(212, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(65, 12);
             this.label5.TabIndex = 6;
@@ -639,14 +639,14 @@
             // 
             // txtConnstr
             // 
-            this.txtConnstr.Location = new System.Drawing.Point(227, 23);
+            this.txtConnstr.Location = new System.Drawing.Point(283, 21);
             this.txtConnstr.Name = "txtConnstr";
-            this.txtConnstr.Size = new System.Drawing.Size(447, 21);
+            this.txtConnstr.Size = new System.Drawing.Size(731, 21);
             this.txtConnstr.TabIndex = 7;
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(695, 22);
+            this.btnRefresh.Location = new System.Drawing.Point(1020, 19);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 8;
@@ -658,7 +658,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1299, 538);
+            this.ClientSize = new System.Drawing.Size(1139, 628);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.txtConnstr);
             this.Controls.Add(this.label5);
@@ -710,7 +710,7 @@
         private System.Windows.Forms.GroupBox gbCodeForlayers;
         private System.Windows.Forms.RadioButton rbBll;
         private System.Windows.Forms.RadioButton rbDal;
-        private System.Windows.Forms.RadioButton rbModel;
+        private System.Windows.Forms.RadioButton rbModels;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txtDalPath;

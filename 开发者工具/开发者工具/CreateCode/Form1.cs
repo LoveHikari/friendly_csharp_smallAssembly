@@ -34,22 +34,13 @@ namespace 开发者工具.CreateCode
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(1155, 604);
+            this.tabControl1.Size = new Size(891, 478);
+
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             this.btnCreateCode.Enabled = false;
-            if (_dataBaseConfig != null)
-            {
-                InitTreeView();
 
-                this.txtConnstr.Text = _dataBaseConfig.ConnStr;
-
-                this.txtModelPath.Text = _namespaceConfig.ModelPath;
-                this.txtDalPath.Text = _namespaceConfig.DalPath;
-                this.txtBllPath.Text = _namespaceConfig.BllPath;
-
-                this.txtModelSuffix.Text = _namespaceConfig.ModelSuffix;
-                this.txtDalSuffix.Text = _namespaceConfig.DalSuffix;
-                this.txtBllSuffix.Text = _namespaceConfig.BllSuffix;
-            }
+            BindData();
         }
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -104,11 +95,32 @@ namespace 开发者工具.CreateCode
         /// <param name="e"></param>
         private void tsbtnAddServer_Click(object sender, EventArgs e)
         {
-            //FrmSelectDatabase fsd = new FrmSelectDatabase();
-            //fsd.ShowDialog(this);
-            //fsd.Dispose();
+            FrmSelectDatabase fsd = new FrmSelectDatabase();
+            if (fsd.ShowDialog(this) == DialogResult.OK)
+            {
+                BindData();
+                InitTreeView();
+            }
+            fsd.Dispose();
+        }
+        /// <summary>
+        /// 初始化数据
+        /// </summary>
+        private void BindData()
+        {
+            if (_dataBaseConfig != null)
+            {
 
-            InitTreeView();
+                this.txtConnstr.Text = _dataBaseConfig.ConnStr;
+
+                this.txtModelPath.Text = _namespaceConfig.ModelPath;
+                this.txtDalPath.Text = _namespaceConfig.DalPath;
+                this.txtBllPath.Text = _namespaceConfig.BllPath;
+
+                this.txtModelSuffix.Text = _namespaceConfig.ModelSuffix;
+                this.txtDalSuffix.Text = _namespaceConfig.DalSuffix;
+                this.txtBllSuffix.Text = _namespaceConfig.BllSuffix;
+            }
         }
         /// <summary>
         /// 初始化树
@@ -178,7 +190,7 @@ namespace 开发者工具.CreateCode
                     className += "BuilderDALForSqlServer";
                     break;
             }
-            if (rbModel.Checked)
+            if (rbModels.Checked)
             {
                 //生成实体类
                 Builder.BuilderModel builderModel = new Builder.BuilderModel(columns, config.Parameter.ModelPath, config.Parameter.ModelSuffix);

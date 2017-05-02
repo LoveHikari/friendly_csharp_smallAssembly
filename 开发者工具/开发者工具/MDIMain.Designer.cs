@@ -573,6 +573,8 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "MDIMain";
             this.Text = "开发者工具";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MDIMain_FormClosed);
+            this.Load += new System.EventHandler(this.MDIMain_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip.ResumeLayout(false);

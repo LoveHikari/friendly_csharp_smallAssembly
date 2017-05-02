@@ -118,8 +118,17 @@ namespace 开发者工具
             form1.MdiParent = this;
             form1.Show();
         }
+
         #endregion
 
+        private void MDIMain_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
 
+        private void MDIMain_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Environment.Exit(0);
+        }
     }
 }

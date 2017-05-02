@@ -82,8 +82,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateCode\FrmSelectDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateCode\FrmSelectDatabase.Designer.cs">
+      <DependentUpon>FrmSelectDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateMvc\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FrmSqlClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSqlClient.Designer.cs">
+      <DependentUpon>FrmSqlClient.cs</DependentUpon>
     </Compile>
     <Compile Include="Tools\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -193,6 +205,12 @@
     <EmbeddedResource Include="CreateCode\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateCode\FrmSelectDatabase.resx">
+      <DependentUpon>FrmSelectDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSqlClient.resx">
+      <DependentUpon>FrmSqlClient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MDIMain.resx">
       <DependentUpon>MDIMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -221,7 +239,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Win.Common\Win.Common.csproj">

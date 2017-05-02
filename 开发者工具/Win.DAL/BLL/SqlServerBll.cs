@@ -36,6 +36,11 @@ namespace Win.DAL.BLL
             _connectionString = dataBaseConfig.ConnStr;
             _providerName = dataBaseConfig.ProviderName;
         }
+        public SqlServerBll(string connectionString)
+        {
+            _connectionString = connectionString;
+            _providerName = "System.Data.SqlClient";
+        }
         /// <summary>
         /// 获得所有数据库
         /// </summary>
