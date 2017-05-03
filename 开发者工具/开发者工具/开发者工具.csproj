@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateCode\Builder\BuilderModel2.cs" />
     <Compile Include="CreateCode\FrmSelectDatabase.cs">
       <SubType>Form</SubType>
     </Compile>

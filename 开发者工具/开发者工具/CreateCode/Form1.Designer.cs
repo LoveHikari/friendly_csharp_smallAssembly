@@ -49,7 +49,7 @@
             this.gbArchitecture = new System.Windows.Forms.GroupBox();
             this.rbMvc = new System.Windows.Forms.RadioButton();
             this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.rbDbu = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
@@ -84,6 +84,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtConnstr = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.rbModels12 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -276,7 +277,7 @@
             // 
             this.gbArchitecture.Controls.Add(this.rbMvc);
             this.gbArchitecture.Controls.Add(this.radioButton6);
-            this.gbArchitecture.Controls.Add(this.radioButton5);
+            this.gbArchitecture.Controls.Add(this.rbDbu);
             this.gbArchitecture.Controls.Add(this.radioButton4);
             this.gbArchitecture.Location = new System.Drawing.Point(6, 328);
             this.gbArchitecture.Name = "gbArchitecture";
@@ -307,17 +308,17 @@
             this.radioButton6.Text = "工厂模式三层";
             this.radioButton6.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // rbDbu
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Checked = true;
-            this.radioButton5.Location = new System.Drawing.Point(102, 21);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(71, 16);
-            this.radioButton5.TabIndex = 1;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "简单三层";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.rbDbu.AutoSize = true;
+            this.rbDbu.Checked = true;
+            this.rbDbu.Location = new System.Drawing.Point(102, 21);
+            this.rbDbu.Name = "rbDbu";
+            this.rbDbu.Size = new System.Drawing.Size(71, 16);
+            this.rbDbu.TabIndex = 1;
+            this.rbDbu.TabStop = true;
+            this.rbDbu.Text = "简单三层";
+            this.rbDbu.UseVisualStyleBackColor = true;
             // 
             // radioButton4
             // 
@@ -557,6 +558,7 @@
             // 
             // gbCodeForlayers
             // 
+            this.gbCodeForlayers.Controls.Add(this.rbModels12);
             this.gbCodeForlayers.Controls.Add(this.rbBll);
             this.gbCodeForlayers.Controls.Add(this.rbDal);
             this.gbCodeForlayers.Controls.Add(this.rbModels);
@@ -570,7 +572,7 @@
             // rbBll
             // 
             this.rbBll.AutoSize = true;
-            this.rbBll.Location = new System.Drawing.Point(133, 20);
+            this.rbBll.Location = new System.Drawing.Point(210, 21);
             this.rbBll.Name = "rbBll";
             this.rbBll.Size = new System.Drawing.Size(41, 16);
             this.rbBll.TabIndex = 2;
@@ -580,7 +582,7 @@
             // rbDal
             // 
             this.rbDal.AutoSize = true;
-            this.rbDal.Location = new System.Drawing.Point(83, 21);
+            this.rbDal.Location = new System.Drawing.Point(160, 21);
             this.rbDal.Name = "rbDal";
             this.rbDal.Size = new System.Drawing.Size(41, 16);
             this.rbDal.TabIndex = 1;
@@ -613,7 +615,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(883, 452);
+            this.tabPage2.Size = new System.Drawing.Size(883, 521);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "代码查看";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -653,6 +655,17 @@
             this.btnRefresh.Text = "刷新";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // rbModels12
+            // 
+            this.rbModels12.AutoSize = true;
+            this.rbModels12.Location = new System.Drawing.Point(89, 21);
+            this.rbModels12.Name = "rbModels12";
+            this.rbModels12.Size = new System.Drawing.Size(65, 16);
+            this.rbModels12.TabIndex = 3;
+            this.rbModels12.TabStop = true;
+            this.rbModels12.Text = "Models2";
+            this.rbModels12.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -728,7 +741,7 @@
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.GroupBox gbArchitecture;
         private System.Windows.Forms.RadioButton radioButton6;
-        private System.Windows.Forms.RadioButton radioButton5;
+        private System.Windows.Forms.RadioButton rbDbu;
         private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtConnstr;
@@ -751,5 +764,6 @@
         private System.Windows.Forms.RadioButton rbBll2;
         private System.Windows.Forms.RadioButton rbIbll2;
         private System.Windows.Forms.ToolStripButton tsbtnAddServer;
+        private System.Windows.Forms.RadioButton rbModels12;
     }
 }

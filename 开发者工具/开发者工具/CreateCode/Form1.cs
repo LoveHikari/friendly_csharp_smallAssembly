@@ -39,6 +39,12 @@ namespace 开发者工具.CreateCode
 
             this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
             this.btnCreateCode.Enabled = false;
+            this.gbCodeForMvc.Visible = false;
+
+            foreach (Control control in this.gbArchitecture.Controls)
+            {
+                control.Click += gbArchitectureRadioButton_Click;
+            }
 
             BindData();
         }
@@ -162,38 +168,25 @@ namespace 开发者工具.CreateCode
             treeView1.EndUpdate();
             treeView1.ExpandAll();
         }
+
         /// <summary>
         /// 创建三层代码
         /// </summary>
         /// <param name="columns">列信息</param>
         /// <param name="config">配置</param>
-        private void CreateDbuCode(List<ColumnModel> columns, Config config)
+        /// <param name="className">生成数据访问代码的类名</param>
+        private void CreateDbuCode(List<ColumnModel> columns, Config config,string className)
         {
-            string tableName = treeView1.SelectedNode.Name;
-            string className = "Builder.";
-            switch (_dataBaseConfig.ProviderName)
-            {
-                case "System.Data.SqlClient":
-                    columns = Win.DAL.BLL.SqlServerBll.Instance.GetTableColumnInfo(tableName);
-                    className += "BuilderDALForSqlServer";
-                    break;
-                case "System.Data.SQLite":
-                    columns = Win.DAL.BLL.SQLiteBll.GetTableColumnInfo(tableName);
-                    className += "BuilderDALForSqlite";
-                    break;
-                case "MySql.Data.MySqlClient":
-                    columns = Win.DAL.BLL.MySqlBll.Instance.GetTableColumnInfo(_dataBaseConfig.DatabaseName, tableName);
-                    className += "BuilderDALForSqlServer";
-                    break;
-                default:
-                    columns = Win.DAL.BLL.SqlServerBll.Instance.GetTableColumnInfo(tableName);
-                    className += "BuilderDALForSqlServer";
-                    break;
-            }
             if (rbModels.Checked)
             {
                 //生成实体类
                 Builder.BuilderModel builderModel = new Builder.BuilderModel(columns, config.Parameter.ModelPath, config.Parameter.ModelSuffix);
+                txtCode.Text = builderModel.CreatModel();
+            }
+            if (rbModels12.Checked)
+            {
+                //生成实体类
+                Builder.BuilderModel2 builderModel = new Builder.BuilderModel2(columns, config.Parameter.ModelPath, config.Parameter.ModelSuffix);
                 txtCode.Text = builderModel.CreatModel();
             }
             if (rbDal.Checked)
@@ -222,7 +215,7 @@ namespace 开发者工具.CreateCode
         {
 
             //加载程序集(dll文件地址)，使用Assembly类   
-            Assembly assembly = Assembly.LoadFile(AppDomain.CurrentDomain.BaseDirectory + "Builder.dll");
+            Assembly assembly = Assembly.LoadFile(AppDomain.CurrentDomain.BaseDirectory + "开发者工具.exe");
 
             //获取类型，参数（名称空间+类）   
             Type type = assembly.GetType(className);
@@ -323,14 +316,14 @@ namespace 开发者工具.CreateCode
                     BllSuffix = this.txtBllSuffix.Text
                 },
                 Classification = "",
-                Architecture = this.rbMvc.Checked?"mvc":(this.radioButton5.Checked?"3ceng":""),
+                Architecture = this.rbMvc.Checked?"mvc":(this.rbDbu.Checked?"3ceng":""),
                 CodeType = "",
             };
             string tableName = treeView1.SelectedNode.Name;  //当前选中的数据表
 
 
             List<ColumnModel> columns;  //所有字段
-            string className = "Builder.";
+            string className = "开发者工具.CreateCode.Builder.";
             switch (_dataBaseConfig.ProviderName)
             {
                 case "System.Data.SqlClient":
@@ -351,13 +344,13 @@ namespace 开发者工具.CreateCode
                     break;
             }
 
-            if (this.rbMvc.Checked)
+            if (this.rbMvc.Checked)  //架构选择mvc模式
             {
                 CreateMvcCode(columns, config);
             }
-            else
+            else if(this.rbDbu.Checked)  //简单三层模式
             {
-                
+                CreateDbuCode(columns,config, className);
             }
 
 
@@ -374,6 +367,37 @@ namespace 开发者工具.CreateCode
             _namespaceConfigRepository.Update(_namespaceConfig);
         }
 
-
+        private void gbArchitectureRadioButton_Click(object sender, EventArgs e)
+        {
+            RadioButton radioButton = (RadioButton) sender;
+            string controlName = "";
+            switch (radioButton.Name)
+            {
+                case "rbDbu":
+                    controlName = "gbCodeForlayers";
+                    break;
+                case "":
+                    controlName = "gbCodeForMvc";
+                    break;
+                default:
+                    controlName = "gbCodeForMvc";
+                    break;
+            }
+            new Action(delegate
+            {
+                foreach (Control control in this.tabPage1.Controls)
+                {
+                    if (control.Text == "代码类型" && control.Name != controlName)
+                    {
+                        control.Visible = false;
+                    }
+                    if (control.Name == controlName)
+                    {
+                        control.Visible = true;
+                        control.Location = new Point(6, 381);
+                    }
+                }
+            }).Invoke();
+        }
     }
 }
