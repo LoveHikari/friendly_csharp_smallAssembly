@@ -75,6 +75,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.gbCodeForlayers = new System.Windows.Forms.GroupBox();
+            this.rbModels12 = new System.Windows.Forms.RadioButton();
             this.rbBll = new System.Windows.Forms.RadioButton();
             this.rbDal = new System.Windows.Forms.RadioButton();
             this.rbModels = new System.Windows.Forms.RadioButton();
@@ -84,7 +85,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtConnstr = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.rbModels12 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -569,6 +569,17 @@
             this.gbCodeForlayers.TabStop = false;
             this.gbCodeForlayers.Text = "代码类型";
             // 
+            // rbModels12
+            // 
+            this.rbModels12.AutoSize = true;
+            this.rbModels12.Location = new System.Drawing.Point(89, 21);
+            this.rbModels12.Name = "rbModels12";
+            this.rbModels12.Size = new System.Drawing.Size(65, 16);
+            this.rbModels12.TabIndex = 3;
+            this.rbModels12.TabStop = true;
+            this.rbModels12.Text = "Models2";
+            this.rbModels12.UseVisualStyleBackColor = true;
+            // 
             // rbBll
             // 
             this.rbBll.AutoSize = true;
@@ -628,7 +639,7 @@
             this.txtCode.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtCode.Size = new System.Drawing.Size(825, 418);
             this.txtCode.TabIndex = 0;
-            this.txtCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyDown);
+            this.txtCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCode_KeyPress);
             // 
             // label5
             // 
@@ -655,17 +666,6 @@
             this.btnRefresh.Text = "刷新";
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // rbModels12
-            // 
-            this.rbModels12.AutoSize = true;
-            this.rbModels12.Location = new System.Drawing.Point(89, 21);
-            this.rbModels12.Name = "rbModels12";
-            this.rbModels12.Size = new System.Drawing.Size(65, 16);
-            this.rbModels12.TabIndex = 3;
-            this.rbModels12.TabStop = true;
-            this.rbModels12.Text = "Models2";
-            this.rbModels12.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

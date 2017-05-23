@@ -284,18 +284,7 @@ namespace 开发者工具.CreateCode
         {
             InitTreeView();
         }
-        /// <summary>
-        /// 代码显示框按键按下
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.A) //按下Ctrl+A
-            {
-                ((TextBox)sender).SelectAll();
-            }
-        }
+
         /// <summary>
         /// 生成按钮单击时发生
         /// </summary>
@@ -398,6 +387,19 @@ namespace 开发者工具.CreateCode
                     }
                 }
             }).Invoke();
+        }
+        /// <summary>
+        /// 按下某键后发生
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\x1')  //按下ctrl+A
+            {
+                ((TextBox)sender).SelectAll();
+                e.Handled = true;
+            }
         }
     }
 }
