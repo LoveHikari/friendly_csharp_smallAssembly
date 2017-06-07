@@ -119,5 +119,12 @@ namespace 开发者工具
         {
             System.Environment.Exit(0);
         }
+
+        private void 设置JAVA环境变量ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            JAVAConfig.Form1 form1 = new JAVAConfig.Form1();
+            form1.MdiParent = this;
+            form1.Show();
+        }
     }
 }

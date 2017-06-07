@@ -77,6 +77,7 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.设置JAVA环境变量ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -238,7 +239,7 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.optionsToolStripMenuItem.Text = "选项(&O)";
             // 
             // windowsMenu
@@ -301,7 +302,8 @@
             this.工具箱ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.常用工具ToolStripMenuItem,
             this.代码生成器ToolStripMenuItem,
-            this.生成MVC框架ToolStripMenuItem});
+            this.生成MVC框架ToolStripMenuItem,
+            this.设置JAVA环境变量ToolStripMenuItem});
             this.工具箱ToolStripMenuItem.Name = "工具箱ToolStripMenuItem";
             this.工具箱ToolStripMenuItem.Size = new System.Drawing.Size(56, 21);
             this.工具箱ToolStripMenuItem.Text = "工具箱";
@@ -471,6 +473,13 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(32, 17);
             this.toolStripStatusLabel.Text = "状态";
             // 
+            // 设置JAVA环境变量ToolStripMenuItem
+            // 
+            this.设置JAVA环境变量ToolStripMenuItem.Name = "设置JAVA环境变量ToolStripMenuItem";
+            this.设置JAVA环境变量ToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.设置JAVA环境变量ToolStripMenuItem.Text = "设置JAVA环境变量";
+            this.设置JAVA环境变量ToolStripMenuItem.Click += new System.EventHandler(this.设置JAVA环境变量ToolStripMenuItem_Click);
+            // 
             // MDIMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -545,6 +554,7 @@
         private System.Windows.Forms.ToolStripMenuItem 常用工具ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 代码生成器ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 生成MVC框架ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 设置JAVA环境变量ToolStripMenuItem;
     }
 }
 

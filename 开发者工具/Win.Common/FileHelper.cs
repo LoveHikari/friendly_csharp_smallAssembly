@@ -571,7 +571,7 @@ namespace Win.Common
         {
             sea = "*" + string.Join("*", sea.ToCharArray()) + "*";
             List<string> fileList = new List<string>(System.IO.Directory.GetFiles(dirPath, sea));
-            List<string> m_dir = FileHelper.FindAllDirectories(dirPath);
+            List<string> m_dir = FindAllDirectories(dirPath);
             foreach (string dir in m_dir)
             {
                 List<string> l = new List<string>(System.IO.Directory.GetFiles(dir, sea));
