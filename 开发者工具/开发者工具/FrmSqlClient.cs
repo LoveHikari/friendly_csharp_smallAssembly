@@ -12,15 +12,13 @@ namespace 开发者工具
 {
     public partial class FrmSqlClient : Form
     {
-        private readonly Win.DAL.DataBaseConfigRepository _dataBaseConfigRepository;
 
         private readonly Win.Models.DataBaseConfig _dataBaseConfig;
         public FrmSqlClient()
         {
             InitializeComponent();
-            _dataBaseConfigRepository = new Win.DAL.DataBaseConfigRepository();
 
-            _dataBaseConfig = _dataBaseConfigRepository.Find(dc => dc.Id == 1);
+            _dataBaseConfig = Win.Models.Config.DataConfig.Instance.GetDataBaseConfig();
         }
 
         private void FrmSqlClient_Load(object sender, EventArgs e)
@@ -59,7 +57,7 @@ namespace 开发者工具
             _dataBaseConfig.ServerName = this.cbServerName.Text;
             _dataBaseConfig.Uid = this.txtUid.Text;
             _dataBaseConfig.Pwd = this.txtPwd.Text;
-            _dataBaseConfigRepository.Update(_dataBaseConfig);
+            Win.Models.Config.DataConfig.Instance.SetDataBaseConfig(_dataBaseConfig);
 
         }
         private void btnCancel_Click(object sender, EventArgs e)

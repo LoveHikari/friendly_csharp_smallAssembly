@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Win.Common;
@@ -111,7 +112,7 @@ namespace 开发者工具.CreateCode.Builder
             }
 
             //方法定义头
-            string strFun = CodeCommon.Space(2) + "public " + strretu + " Add(" + Modelname + " model)";
+            string strFun = StringHelper.Space(2) + "public " + strretu + " Add(" + Modelname + " model)";
             strclass.AppendLine(strFun);
             strclass.AppendSpaceLine(2, "{");
             strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
@@ -132,7 +133,7 @@ namespace 开发者工具.CreateCode.Builder
                     continue;  //如果是自增列，则跳过
                 }
 
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{PreParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{PreParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
             }
             strclass2.DelLastChar(",");
             strclass2.AppendSpaceLine(4, "});");

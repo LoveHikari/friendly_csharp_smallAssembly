@@ -38,7 +38,7 @@ namespace 开发者工具.Tools
         /// <param name="e"></param>
         private void btnGetDbc_Click(object sender, RoutedEventArgs e)
         {
-            this.txtDestDbc.Text = Win.Common.StringHelper.ToSbc(this.txtSourceDbc.Text);
+            this.txtDestDbc.Text = this.txtSourceDbc.Text.ToSbc();
         }
         /// <summary>
         /// 全转半
@@ -47,7 +47,7 @@ namespace 开发者工具.Tools
         /// <param name="e"></param>
         private void btnGetDbcBack_Click(object sender, RoutedEventArgs e)
         {
-            this.txtSourceDbc.Text = Win.Common.StringHelper.ToDbc(this.txtDestDbc.Text);
+            this.txtSourceDbc.Text = this.txtDestDbc.Text.ToDbc();
         }
 
 
@@ -85,7 +85,7 @@ namespace 开发者工具.Tools
         /// <param name="e"></param>
         private void btnTransUnix_Click(object sender, RoutedEventArgs e)
         {
-            this.txtDestUnix.Text = Win.Common.DateTimeHelper.ConvertDateTimeInt(DateTime.Parse(this.txtSourceUnix.Text)).ToString();
+            this.txtDestUnix.Text = DateTimeHelper.ConvertDateTimeInt(DateTime.Parse(this.txtSourceUnix.Text)).ToString();
         }
         /// <summary>
         /// 转原日期
@@ -94,7 +94,7 @@ namespace 开发者工具.Tools
         /// <param name="e"></param>
         private void btnTransDate_Click(object sender, RoutedEventArgs e)
         {
-            this.txtSourceUnix.Text = Win.Common.DateTimeHelper.ConvertDateTime(this.txtDestUnix.Text).ToString("yyyy-MM-dd HH:mm:ss");
+            this.txtSourceUnix.Text = DateTimeHelper.ConvertDateTime(this.txtDestUnix.Text).ToString("yyyy-MM-dd HH:mm:ss");
         }
 
 

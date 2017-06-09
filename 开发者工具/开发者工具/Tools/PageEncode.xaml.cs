@@ -99,7 +99,7 @@ namespace 开发者工具.Tools
                     for (int i = 0; i < utf8Array.Length; i++)
                     {
                         int code = (int)(utf8Array[i]);
-                        string str = Win.Common.ConvertHelper.ConvertBase(code.ToString(), 10, 16).PadLeft(4, '0');
+                        string str = ConvertHelper.ConvertBase(code.ToString(), 10, 16).PadLeft(4, '0');
                         utf8Str += "\\u" + str;
                     }
                     this.txtDestUnicode.Text = utf8Str;

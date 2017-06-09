@@ -31,8 +31,7 @@ namespace Win.DAL.BLL
         private static string _providerName;
         public MySqlBll()
         {
-             DataBaseConfigRepository dataBaseConfigRepository = new DataBaseConfigRepository();
-            var dataBaseConfig = dataBaseConfigRepository.Find(dc => dc.Id == 1);
+            var dataBaseConfig = Win.Models.Config.DataConfig.Instance.GetDataBaseConfig();
             _connectionString = dataBaseConfig.ConnStr;
             _providerName = dataBaseConfig.ProviderName;
         }

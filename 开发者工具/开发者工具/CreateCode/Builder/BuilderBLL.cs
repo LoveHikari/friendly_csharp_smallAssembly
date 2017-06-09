@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Win.Common;
@@ -41,7 +42,7 @@ namespace 开发者工具.CreateCode.Builder
             _modelname = tableName.ToPascal() + modelSuffix;
             _dalname = tableName.ToPascal() + dalSuffix;
             _bllname = tableName.ToPascal() + bllSuffix;
-            _keys = CodeCommon.GetPrimaryKeyList(fieldlist);
+            _keys = Win.Common.CodeCommon.GetPrimaryKeyList(fieldlist);
             foreach (ColumnModel key in _keys)
             {
                 _identityKey = key.ColumnName;
@@ -49,7 +50,7 @@ namespace 开发者工具.CreateCode.Builder
                 if (key.IsIdentity)
                 {
                     _identityKey = key.ColumnName;
-                    _identityKeyType = CodeCommon.DbTypeToCS(key.TypeName);
+                    _identityKeyType = Win.Common.CodeCommon.DbTypeToCS(key.TypeName);
                     break;
                 }
             }
@@ -62,7 +63,7 @@ namespace 开发者工具.CreateCode.Builder
             _fieldstrlist = fields.DelLastChar(",").ToString();
 
             _preParameter = "@";
-            _isHasIdentity = CodeCommon.IsHasIdentity(_keys);
+            _isHasIdentity = Win.Common.CodeCommon.IsHasIdentity(_keys);
             _keysNullTip = _keys.Count == 0 ? "//该表无主键信息，请自定义主键/条件字段" : "";
         }
         #endregion

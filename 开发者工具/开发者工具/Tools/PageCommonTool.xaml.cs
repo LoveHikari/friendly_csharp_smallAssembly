@@ -26,7 +26,7 @@ namespace 开发者工具.Tools
         /// <param name="e"></param>
         private void btnJsonFormat_Click(object sender, RoutedEventArgs e)
         {
-            this.txtJsonNew.Text = Win.Common.JsonHelper.ConvertJsonString(this.txtJsonOld.Text);
+            this.txtJsonNew.Text = NewtonsoftJsonHelper.ConvertJsonString(this.txtJsonOld.Text);
         }
         /// <summary>
         /// 复制结果按钮

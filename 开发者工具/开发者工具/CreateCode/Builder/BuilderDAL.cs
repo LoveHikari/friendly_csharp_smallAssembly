@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Win.Common;
@@ -90,7 +91,7 @@ namespace 开发者工具.CreateCode.Builder
             _modelname = tableName.ToPascal() + modelSuffix;
             _dalname = tableName.ToPascal() + dalSuffix;
 
-            _keys = CodeCommon.GetPrimaryKeyList(fieldlist);
+            _keys = Win.Common.CodeCommon.GetPrimaryKeyList(fieldlist);
             foreach (ColumnModel key in _keys)
             {
                 _identityKey = key.ColumnName;
@@ -98,7 +99,7 @@ namespace 开发者工具.CreateCode.Builder
                 if (key.IsIdentity)
                 {
                     _identityKey = key.ColumnName;
-                    _identityKeyType = CodeCommon.DbTypeToCS(key.TypeName);
+                    _identityKeyType = Win.Common.CodeCommon.DbTypeToCS(key.TypeName);
                     break;
                 }
             }
@@ -110,7 +111,7 @@ namespace 开发者工具.CreateCode.Builder
             fields.DelLastChar(",");
             _fieldstrlist = fields.ToString();
 
-            _isHasIdentity = CodeCommon.IsHasIdentity(_keys);
+            _isHasIdentity = Win.Common.CodeCommon.IsHasIdentity(_keys);
             _dbParaHead = "";//"Sql";
             _preParameter = "@";
             _keysNullTip = _keys.Count == 0 ? "//该表无主键信息，请自定义主键/条件字段" : "";
@@ -316,7 +317,7 @@ namespace 开发者工具.CreateCode.Builder
             }
 
             //方法定义头
-            string strFun = CodeCommon.Space(2) + "public " + strretu + " Add(" + _modelname + " model)";
+            string strFun = StringHelper.Space(2) + "public " + strretu + " Add(" + _modelname + " model)";
             strclass.AppendLine(strFun);
             strclass.AppendSpaceLine(2, "{");
             strclass.AppendSpaceLine(3, "CrDB db = new DBHelper();");
@@ -338,7 +339,7 @@ namespace 开发者工具.CreateCode.Builder
                     continue;  //如果是自增列，则跳过
                 }
 
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
             }
             strclass2.DelLastChar(",");
             strclass2.AppendSpaceLine(4, "});");
@@ -432,13 +433,13 @@ namespace 开发者工具.CreateCode.Builder
                 {
                     continue;
                 }
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
 
             }
 
             foreach (ColumnModel field in fieldpk)
             {
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{CodeCommon.SqlTypeToDbType(field.TypeName)}{(field.Precision == 0 ? "" : ", " + field.Precision)}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)}{(field.Precision == 0 ? "" : ", " + field.Precision)}),");
             }
 
             if (strclass2.Length > 0)
@@ -501,7 +502,7 @@ namespace 开发者工具.CreateCode.Builder
             strclass.AppendSpaceLine(3, "strSql.Append(\"delete from " + _fieldlist[0].TableName + " \");");
             strclass.AppendSpaceLine(3, "strSql.Append(\" where " + _identityKey + "=@" + _identityKey + "\");");
             strclass.AppendSpaceLine(3, "List<DBParam> dbParams = new List<DBParam>(new DBParam[]  {");
-            strclass.AppendSpaceLine(4, $"new DBParam(\"@{_identityKey}\",{_identityKey.ToFirstLower()}, DbType.{CodeCommon.SqlTypeToDbType(_identityKeyType)},4)");
+            strclass.AppendSpaceLine(4, $"new DBParam(\"@{_identityKey}\",{_identityKey.ToFirstLower()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(_identityKeyType)},4)");
             strclass.AppendSpaceLine(3, "});");
             strclass.AppendSpaceLine(3, "int rows=" + _dbhelperName + ".ExecuteNonQuery(strSql.ToString(),dbParams);");
             strclass.AppendSpaceLine(3, "if (rows > 0)");
@@ -585,7 +586,7 @@ namespace 开发者工具.CreateCode.Builder
             strclass.AppendSpaceLine(3, "strSql.Append(\" where " + _identityKey + "=@" + _identityKey + "\");");
 
             strclass.AppendSpaceLine(3, "List<DBParam> dbParams = new List<DBParam>(new DBParam[]  {");
-            strclass.AppendSpaceLine(4, $"new DBParam(\"@{_identityKey}\",{_identityKey.ToFirstLower()}, DbType.{CodeCommon.SqlTypeToDbType(_identityKeyType)},4)");
+            strclass.AppendSpaceLine(4, $"new DBParam(\"@{_identityKey}\",{_identityKey.ToFirstLower()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(_identityKeyType)},4)");
 
             strclass.AppendSpaceLine(3, "});");
 
@@ -630,7 +631,7 @@ namespace 开发者工具.CreateCode.Builder
                 //strclass.AppendSpaceLine(4, "if(row[\"" + columnName + "\"]!=null && row[\"" + columnName + "\"].ToString()!=\"\")");
                 //strclass.AppendSpaceLine(4, "{");
                 #region
-                switch (CodeCommon.DbTypeToCS(columnType))
+                switch (Win.Common.CodeCommon.DbTypeToCS(columnType))
                 {
                     case "int":
                         {

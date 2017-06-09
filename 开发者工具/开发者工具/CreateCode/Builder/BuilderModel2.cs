@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Win.Common;
@@ -95,7 +96,7 @@ namespace 开发者工具.CreateCode.Builder
                 bool cisnull = field.IsCanNull;
                 //string defValue=field.DefaultVal;
                 string deText = field.Description;
-                string columnType = CodeCommon.DbTypeToCS(columnTypedb);
+                string columnType = Win.Common.CodeCommon.DbTypeToCS(columnTypedb);
                 string isnull = "";
                 if ((!isIdentity) && (!ispk) && (cisnull) && (columnType!="string"))
                 {

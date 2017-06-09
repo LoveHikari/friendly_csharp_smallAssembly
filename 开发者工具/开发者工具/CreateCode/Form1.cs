@@ -15,8 +15,6 @@ namespace 开发者工具.CreateCode
 {
     public partial class Form1 : Form
     {
-        private readonly Win.DAL.DataBaseConfigRepository _dataBaseConfigRepository;
-        private readonly Win.DAL.NamespaceConfigRepository _namespaceConfigRepository;
 
         private readonly Win.Models.DataBaseConfig _dataBaseConfig;
         private readonly Win.Models.NamespaceConfig _namespaceConfig;
@@ -25,11 +23,8 @@ namespace 开发者工具.CreateCode
         {
             InitializeComponent();
 
-            _dataBaseConfigRepository = new Win.DAL.DataBaseConfigRepository();
-            _namespaceConfigRepository = new Win.DAL.NamespaceConfigRepository();
-
-            _dataBaseConfig = _dataBaseConfigRepository.Find(dc => dc.Id == 1);
-            _namespaceConfig = _namespaceConfigRepository.Find(nc => nc.Id == 1);
+            _dataBaseConfig = Win.Models.Config.DataConfig.Instance.GetDataBaseConfig();
+            _namespaceConfig = Win.Models.Config.DataConfig.Instance.GetNamespaceConfig();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -353,7 +348,7 @@ namespace 开发者工具.CreateCode
             _namespaceConfig.ModelSuffix = this.txtModelSuffix.Text;
             _namespaceConfig.DalSuffix = this.txtDalSuffix.Text;
             _namespaceConfig.BllSuffix = this.txtBllSuffix.Text;
-            _namespaceConfigRepository.Update(_namespaceConfig);
+            Win.Models.Config.DataConfig.Instance.SetNamespaceConfig(_namespaceConfig);
         }
 
         private void gbArchitectureRadioButton_Click(object sender, EventArgs e)

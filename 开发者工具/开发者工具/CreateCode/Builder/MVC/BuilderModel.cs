@@ -55,7 +55,7 @@ namespace 开发者工具.CreateCode.Builder.MVC
             strclass.AppendSpaceLine(2, "#region Model");
             foreach (ColumnModel field in Fieldlist)
             {
-                string columnType = CodeCommon.DbTypeToCS(field.TypeName);
+                string columnType = Win.Common.CodeCommon.DbTypeToCS(field.TypeName);
                 string defValue = "";
                 string isnull = "";
                 if ((!field.IsIdentity) && (!field.IsPrimaryKey) && (field.IsCanNull) && (columnType != "string"))

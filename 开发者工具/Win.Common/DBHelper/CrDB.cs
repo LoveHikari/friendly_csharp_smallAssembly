@@ -237,7 +237,7 @@ namespace Win.Common.DBHelper
             {
                 iserror = true;
                 strerror = ex.Message;
-                WriteLogHelper.WriteError(ex);
+                LogHelper.WriteError(ex);
             }
             finally
             {
@@ -272,7 +272,7 @@ namespace Win.Common.DBHelper
             }
             catch (Exception ex)
             {
-                WriteLogHelper.WriteError(ex);
+                LogHelper.WriteError(ex);
                 throw new Exception(ex.Message);
             }
             finally
@@ -333,7 +333,7 @@ namespace Win.Common.DBHelper
             }
             catch (Exception ex)
             {
-                WriteLogHelper.WriteError(ex);
+                LogHelper.WriteError(ex);
                 throw ex;
             }
             finally
@@ -395,7 +395,7 @@ namespace Win.Common.DBHelper
             }
             catch (Exception ex)
             {
-                WriteLogHelper.WriteError(ex);
+                LogHelper.WriteError(ex);
                 throw ex;
             }
             finally
@@ -456,7 +456,7 @@ namespace Win.Common.DBHelper
             }
             catch (Exception ex)
             {
-                WriteLogHelper.WriteError(ex);
+                LogHelper.WriteError(ex);
                 throw ex;
             }
 

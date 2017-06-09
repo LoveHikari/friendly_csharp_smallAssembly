@@ -85,7 +85,7 @@ namespace 开发者工具.CreateMvc
             string iDalPath = this.txtIdalPath.Text;
             
             string filePath = System.IO.Path.Combine(Environment.CurrentDirectory, "App_Data\\Template",dir2,"IBaseRepository.te");
-            string s = Win.Common.FileHelper.ReadFile(filePath);
+            string s = FileHelper.ReadFile(filePath);
             s = s.Replace("${IdalPath}", iDalPath);
             filePath = System.IO.Path.Combine(dir, "IDAL\\IBaseRepository.cs");
             FileHelper.WriteFile(filePath, s);

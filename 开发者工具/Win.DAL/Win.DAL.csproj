@@ -64,14 +64,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppDbContext.cs" />
-    <Compile Include="BaseRepository.cs" />
     <Compile Include="BLL\MySqlBll.cs" />
     <Compile Include="BLL\SQLiteBll.cs" />
     <Compile Include="BLL\SqlServerBll.cs" />
-    <Compile Include="ContextFactory.cs" />
-    <Compile Include="DataBaseConfigRepository.cs" />
-    <Compile Include="NamespaceConfigRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -103,5 +98,6 @@
       <Name>Win.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
