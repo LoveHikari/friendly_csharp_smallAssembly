@@ -91,6 +91,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CreateCode\Builder\BuilderModel2.cs" />
+    <Compile Include="CreateCode\Builder\WebPage\BuilderView.cs" />
     <Compile Include="CreateCode\FrmSelectDatabase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +286,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\WebTemplate\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

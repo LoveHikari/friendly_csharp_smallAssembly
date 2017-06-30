@@ -5,7 +5,7 @@ using System.Text;
 using Win.Common;
 using Win.Models;
 
-namespace 开发者工具.CreateCode.Builder
+namespace DeveloperKit.Views.CreateCode.Builder
 {
     public class BuilderDALForSqlite : BuilderDAL
     {

@@ -12,3 +12,15 @@
 /开发者工具/开发者工具/obj
 /开发者工具/.vs
 /开发者工具/packages
+/DeveloperKit/Win.Common/bin
+/DeveloperKit/Win.Common/obj
+/DeveloperKit/Win.DAL/bin
+/DeveloperKit/Win.DAL/obj
+/DeveloperKit/Win.Models/bin
+/DeveloperKit/Win.Models/obj
+/DeveloperKit/PostSharp.KeyMaker/bin
+/DeveloperKit/PostSharp.KeyMaker/obj
+/DeveloperKit/DeveloperKit/bin
+/DeveloperKit/DeveloperKit/obj
+/DeveloperKit/.vs
+/DeveloperKit/packages

@@ -5,7 +5,7 @@ using System.Text;
 using Win.Common;
 using Win.Models;
 
-namespace 开发者工具.CreateCode.Builder
+namespace DeveloperKit.Views.CreateCode.Builder
 {
     /// <summary>
     /// 数据访问层代码构造器（Parameter方式）

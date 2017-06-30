@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DeveloperKit.Views.CreateCode.Models;
 using Win.Models;
-using 开发者工具.CreateCode.Models;
 
-namespace 开发者工具.CreateCode
+namespace DeveloperKit.Views.CreateCode
 {
     public partial class Form1 : Form
     {
