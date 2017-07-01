@@ -85,6 +85,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtConnstr = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -558,6 +559,7 @@
             // 
             // gbCodeForlayers
             // 
+            this.gbCodeForlayers.Controls.Add(this.button1);
             this.gbCodeForlayers.Controls.Add(this.rbModels12);
             this.gbCodeForlayers.Controls.Add(this.rbBll);
             this.gbCodeForlayers.Controls.Add(this.rbDal);
@@ -667,6 +669,15 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(292, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -765,5 +776,6 @@
         private System.Windows.Forms.RadioButton rbIbll2;
         private System.Windows.Forms.ToolStripButton tsbtnAddServer;
         private System.Windows.Forms.RadioButton rbModels12;
+        private System.Windows.Forms.Button button1;
     }
 }

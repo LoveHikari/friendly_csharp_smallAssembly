@@ -9,23 +9,7 @@ namespace Win.DAL.BLL
     public class SqlServerBll
     {
         #region instance
-        private static volatile SqlServerBll _instance = null;
-        private static readonly object lockHelper = new object();
-        public static SqlServerBll Instance
-        {
-            get
-            {
-                if (_instance == null)
-                {
-                    lock (lockHelper)
-                    {
-                        if (_instance == null)
-                            _instance = new SqlServerBll();
-                    }
-                }
-                return _instance;
-            }
-        }
+        public static SqlServerBll Instance => new SqlServerBll();
         #endregion
         private static string _connectionString;
         private static string _providerName;
@@ -56,7 +40,7 @@ namespace Win.DAL.BLL
             {
                 throw ex;
             }
-            
+
         }
         /// <summary>
         /// 获得所有数据表

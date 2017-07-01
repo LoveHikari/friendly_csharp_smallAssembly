@@ -12,16 +12,11 @@ namespace DeveloperKit.Views.CreateCode
 {
     public partial class Form1 : Form
     {
-
-        private readonly Win.Models.DataBaseConfig _dataBaseConfig;
-        private readonly Win.Models.NamespaceConfig _namespaceConfig;
-
+        public DataBaseConfig DataBaseConfig => Win.Models.Config.DataConfig.Instance.GetDataBaseConfig();
+        public NamespaceConfig NamespaceConfig => Win.Models.Config.DataConfig.Instance.GetNamespaceConfig();
         public Form1()
         {
             InitializeComponent();
-
-            _dataBaseConfig = Win.Models.Config.DataConfig.Instance.GetDataBaseConfig();
-            _namespaceConfig = Win.Models.Config.DataConfig.Instance.GetNamespaceConfig();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -64,7 +59,7 @@ namespace DeveloperKit.Views.CreateCode
             string tableName = tn.Name;
             DataTable dt = new DataTable();
 
-            switch (_dataBaseConfig.ProviderName)
+            switch (DataBaseConfig.ProviderName)
             {
                 case "System.Data.SqlClient":
                     dt = Win.DAL.BLL.SqlServerBll.Instance.GetColumnTable(tableName);
@@ -73,7 +68,7 @@ namespace DeveloperKit.Views.CreateCode
                     dt = Win.DAL.BLL.SQLiteBll.GetColumnTable(tableName);
                     break;
                 case "MySql.Data.MySqlClient":
-                    dt = Win.DAL.BLL.MySqlBll.Instance.GetColumnTable(_dataBaseConfig.DatabaseName, tableName);
+                    dt = Win.DAL.BLL.MySqlBll.Instance.GetColumnTable(DataBaseConfig.DatabaseName, tableName);
                     break;
             }
 
@@ -106,18 +101,18 @@ namespace DeveloperKit.Views.CreateCode
         /// </summary>
         private void BindData()
         {
-            if (_dataBaseConfig != null)
+            if (DataBaseConfig != null)
             {
 
-                this.txtConnstr.Text = _dataBaseConfig.ConnStr;
+                this.txtConnstr.Text = DataBaseConfig.ConnStr;
 
-                this.txtModelPath.Text = _namespaceConfig.ModelPath;
-                this.txtDalPath.Text = _namespaceConfig.DalPath;
-                this.txtBllPath.Text = _namespaceConfig.BllPath;
+                this.txtModelPath.Text =NamespaceConfig.ModelPath;
+                this.txtDalPath.Text = NamespaceConfig.DalPath;
+                this.txtBllPath.Text = NamespaceConfig.BllPath;
 
-                this.txtModelSuffix.Text = _namespaceConfig.ModelSuffix;
-                this.txtDalSuffix.Text = _namespaceConfig.DalSuffix;
-                this.txtBllSuffix.Text = _namespaceConfig.BllSuffix;
+                this.txtModelSuffix.Text = NamespaceConfig.ModelSuffix;
+                this.txtDalSuffix.Text = NamespaceConfig.DalSuffix;
+                this.txtBllSuffix.Text = NamespaceConfig.BllSuffix;
             }
         }
         /// <summary>
@@ -127,8 +122,8 @@ namespace DeveloperKit.Views.CreateCode
         {
             treeView1.Nodes.Clear();
             treeView1.BeginUpdate();
-            string databaseName = _dataBaseConfig.DatabaseName;
-            string providerName = _dataBaseConfig.ProviderName;
+            string databaseName = DataBaseConfig.DatabaseName;
+            string providerName = DataBaseConfig.ProviderName;
             DataTable dt;
             switch (providerName)
             {
@@ -306,7 +301,7 @@ namespace DeveloperKit.Views.CreateCode
 
             List<ColumnModel> columns;  //所有字段
             string className = "开发者工具.CreateCode.Builder.";
-            switch (_dataBaseConfig.ProviderName)
+            switch (DataBaseConfig.ProviderName)
             {
                 case "System.Data.SqlClient":
                     columns = Win.DAL.BLL.SqlServerBll.Instance.GetTableColumnInfo(tableName);
@@ -317,7 +312,7 @@ namespace DeveloperKit.Views.CreateCode
                     className += "BuilderDALForSqlite";
                     break;
                 case "MySql.Data.MySqlClient":
-                    columns = Win.DAL.BLL.MySqlBll.Instance.GetTableColumnInfo(_dataBaseConfig.DatabaseName, tableName);
+                    columns = Win.DAL.BLL.MySqlBll.Instance.GetTableColumnInfo(DataBaseConfig.DatabaseName, tableName);
                     className += "BuilderDALForSqlServer";
                     break;
                 default:
@@ -339,14 +334,14 @@ namespace DeveloperKit.Views.CreateCode
 
             tabControl1.SelectedIndex = 1;
 
-            _namespaceConfig.ModelPath = this.txtModelPath.Text;
-            _namespaceConfig.DalPath = this.txtDalPath.Text;
-            _namespaceConfig.BllPath = this.txtBllPath.Text;
-
-            _namespaceConfig.ModelSuffix = this.txtModelSuffix.Text;
-            _namespaceConfig.DalSuffix = this.txtDalSuffix.Text;
-            _namespaceConfig.BllSuffix = this.txtBllSuffix.Text;
-            Win.Models.Config.DataConfig.Instance.SetNamespaceConfig(_namespaceConfig);
+            NamespaceConfig.ModelPath = this.txtModelPath.Text;
+            NamespaceConfig.DalPath = this.txtDalPath.Text;
+            NamespaceConfig.BllPath = this.txtBllPath.Text;
+            
+            NamespaceConfig.ModelSuffix = this.txtModelSuffix.Text;
+            NamespaceConfig.DalSuffix = this.txtDalSuffix.Text;
+            NamespaceConfig.BllSuffix = this.txtBllSuffix.Text;
+            Win.Models.Config.DataConfig.Instance.SetNamespaceConfig(NamespaceConfig);
 
             //var b = new Builder.WebPage.BuilderView(columns);
             //this.txtCode.Text = b.A();
