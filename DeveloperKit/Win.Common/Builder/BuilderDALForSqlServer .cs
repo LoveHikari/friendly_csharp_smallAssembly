@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Win.Models;
 
-namespace DeveloperKit.Views.CreateCode.Builder
+namespace Win.Common.Builder
 {
     public class BuilderDALForSqlServer : BuilderDAL
     {

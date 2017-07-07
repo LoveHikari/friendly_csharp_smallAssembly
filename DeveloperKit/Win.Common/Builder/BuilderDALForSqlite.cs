@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Win.Common;
 using Win.Models;
 
-namespace DeveloperKit.Views.CreateCode.Builder
+namespace Win.Common.Builder
 {
     public class BuilderDALForSqlite : BuilderDAL
     {

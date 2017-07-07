@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Win.Common;
 using Win.Models;
 
-namespace DeveloperKit.Views.CreateCode.Builder.MVC
+namespace Win.Common.Builder.MVC
 {
     /// <summary>
     /// 生成业务层接口

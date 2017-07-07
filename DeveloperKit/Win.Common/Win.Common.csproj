@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNet.Utilities">
-      <HintPath>..\dllImport\DotNet.Utilities.dll</HintPath>
+    <Reference Include="FsLib.Common">
+      <HintPath>..\dllImport\FsLib.Common.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\dllImport\Newtonsoft.Json.dll</HintPath>
@@ -47,6 +47,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\BuilderBLL.cs" />
+    <Compile Include="Builder\BuilderDAL.cs" />
+    <Compile Include="Builder\BuilderDALForSqlite.cs" />
+    <Compile Include="Builder\BuilderDALForSqlServer .cs" />
+    <Compile Include="Builder\BuilderModel.cs" />
+    <Compile Include="Builder\BuilderModel2.cs" />
+    <Compile Include="Builder\MVC\BuilderBLL.cs" />
+    <Compile Include="Builder\MVC\BuilderDAL.cs" />
+    <Compile Include="Builder\MVC\BuilderIBLL.cs" />
+    <Compile Include="Builder\MVC\BuilderIDAL.cs" />
+    <Compile Include="Builder\MVC\BuilderModel.cs" />
+    <Compile Include="Builder\WebPage\BuilderView.cs" />
     <Compile Include="CodeCommon.cs" />
     <Compile Include="ConvertHelper.cs" />
     <Compile Include="DateTimeHelper.cs" />
@@ -57,7 +69,7 @@
     <Compile Include="FileHelper.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Public.cs" />
+    <Compile Include="FormHelper.cs" />
     <Compile Include="RegistryHelper.cs" />
     <Compile Include="StringBuilderExtensions.cs" />
     <Compile Include="StringExtensions.cs" />

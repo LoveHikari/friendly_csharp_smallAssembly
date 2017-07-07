@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Win.Common;
 using Win.Models;
 
-namespace DeveloperKit.Views.CreateCode.Builder
+namespace Win.Common.Builder
 {
     /// <summary>
     /// 可系列化的Model代码生成组件
@@ -65,7 +64,7 @@ namespace DeveloperKit.Views.CreateCode.Builder
                 strclass.AppendSpaceLine(1, "/// " + _fieldlist[0].TableName + ":实体类(属性说明自动提取数据库字段的描述信息)");
             }
             strclass.AppendSpaceLine(1, "/// </summary>");
-            strclass.AppendSpaceLine(1, "[DataContract]");
+            strclass.AppendSpaceLine(1, "[Serializable]");
             strclass.AppendSpaceLine(1, "public partial class " + _modelName);
             strclass.AppendSpaceLine(1, "{");
             strclass.AppendLine(CreatModelMethod());
@@ -106,7 +105,6 @@ namespace DeveloperKit.Views.CreateCode.Builder
                 strclass2.AppendSpaceLine(2, "/// <summary>");
                 strclass2.AppendSpaceLine(2, "/// " + deText);
                 strclass2.AppendSpaceLine(2, "/// </summary>");
-                strclass2.AppendSpaceLine(2, $"[DataMember(Order = {i})]");
                 strclass2.AppendSpaceLine(2, "public " + columnType + isnull + " " + columnName.ToFirstUpper() + " { get; set; }");//属性
                 i++;
             }

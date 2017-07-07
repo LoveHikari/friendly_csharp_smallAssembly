@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Win.Common;
 using Win.Models;
 
-namespace DeveloperKit.Views.CreateCode.Builder
+namespace Win.Common.Builder
 {
     /// <summary>
     /// 业务层代码组件

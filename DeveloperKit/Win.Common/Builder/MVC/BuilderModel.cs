@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Win.Models;
 
-namespace DeveloperKit.Views.CreateCode.Builder.MVC
+namespace Win.Common.Builder.MVC
 {
     public class BuilderModel : Builder.BuilderModel
     {
@@ -168,7 +168,7 @@ namespace DeveloperKit.Views.CreateCode.Builder.MVC
                 }
                 if (isnull == "")
                 {
-                    strclass.AppendSpaceLine(2, "[Required(ErrorMessage = \"必填\")]");
+                    strclass.AppendSpaceLine(2, "[Required(ErrorMessage = \"必填\",AllowEmptyStrings = true)]");
                 }
                 if (columnType == "string" || columnType == "Byte[]")
                 {

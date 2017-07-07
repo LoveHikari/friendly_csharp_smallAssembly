@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Win.Common;
 using Win.Models;
 
-namespace DeveloperKit.Views.CreateCode.Builder
+namespace Win.Common.Builder
 {
     /// <summary>
     /// 数据访问层代码构造器（Parameter方式）
@@ -99,7 +98,7 @@ namespace DeveloperKit.Views.CreateCode.Builder
                 if (key.IsIdentity)
                 {
                     _identityKey = key.ColumnName;
-                    _identityKeyType = Win.Common.CodeCommon.DbTypeToCS(key.TypeName);
+                    _identityKeyType = System.CodeCommon.DbTypeToCS(key.TypeName);
                     break;
                 }
             }
@@ -422,8 +421,6 @@ namespace DeveloperKit.Views.CreateCode.Builder
             strclass2.AppendSpaceLine(4, "{");
             foreach (ColumnModel field in _fieldlist)
             {
-                strclass.AppendSpaceLine(3, "strSql.Append(\"" + field.ColumnName + "=" + _preParameter + field.ColumnName + ",\");");
-
                 if (field.IsIdentity || field.IsPrimaryKey || (_keys.Contains(field)))
                 {
                     fieldpk.Add(field);
@@ -433,6 +430,7 @@ namespace DeveloperKit.Views.CreateCode.Builder
                 {
                     continue;
                 }
+                strclass.AppendSpaceLine(3, "strSql.Append(\"" + field.ColumnName + "=" + _preParameter + field.ColumnName + ",\");");
                 strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
 
             }

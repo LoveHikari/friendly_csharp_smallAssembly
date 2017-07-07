@@ -56,6 +56,7 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnAllGenerate = new System.Windows.Forms.Button();
             this.rbNew = new System.Windows.Forms.RadioButton();
             this.rbOld = new System.Windows.Forms.RadioButton();
             this.btnCreateCode = new System.Windows.Forms.Button();
@@ -85,7 +86,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtConnstr = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -378,6 +378,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnAllGenerate);
             this.groupBox3.Controls.Add(this.rbNew);
             this.groupBox3.Controls.Add(this.rbOld);
             this.groupBox3.Controls.Add(this.btnCreateCode);
@@ -389,6 +390,16 @@
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "操作";
+            // 
+            // btnAllGenerate
+            // 
+            this.btnAllGenerate.Location = new System.Drawing.Point(638, 17);
+            this.btnAllGenerate.Name = "btnAllGenerate";
+            this.btnAllGenerate.Size = new System.Drawing.Size(75, 23);
+            this.btnAllGenerate.TabIndex = 10;
+            this.btnAllGenerate.Text = "全部生成";
+            this.btnAllGenerate.UseVisualStyleBackColor = true;
+            this.btnAllGenerate.Click += new System.EventHandler(this.btnAllGenerate_Click);
             // 
             // rbNew
             // 
@@ -559,7 +570,6 @@
             // 
             // gbCodeForlayers
             // 
-            this.gbCodeForlayers.Controls.Add(this.button1);
             this.gbCodeForlayers.Controls.Add(this.rbModels12);
             this.gbCodeForlayers.Controls.Add(this.rbBll);
             this.gbCodeForlayers.Controls.Add(this.rbDal);
@@ -669,15 +679,6 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(292, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -776,6 +777,6 @@
         private System.Windows.Forms.RadioButton rbIbll2;
         private System.Windows.Forms.ToolStripButton tsbtnAddServer;
         private System.Windows.Forms.RadioButton rbModels12;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAllGenerate;
     }
 }

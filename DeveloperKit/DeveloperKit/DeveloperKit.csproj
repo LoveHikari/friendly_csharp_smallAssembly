@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNet.Utilities">
-      <HintPath>..\dllImport\DotNet.Utilities.dll</HintPath>
+    <Reference Include="FsLib.Common">
+      <HintPath>..\dllImport\FsLib.Common.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\dllImport\log4net.dll</HintPath>
@@ -69,18 +69,6 @@
     <Compile Include="Views\CalculatorView.xaml.cs">
       <DependentUpon>CalculatorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CreateCode\Builder\BuilderBLL.cs" />
-    <Compile Include="Views\CreateCode\Builder\BuilderDAL.cs" />
-    <Compile Include="Views\CreateCode\Builder\BuilderDALForSqlite.cs" />
-    <Compile Include="Views\CreateCode\Builder\BuilderDALForSqlServer .cs" />
-    <Compile Include="Views\CreateCode\Builder\BuilderModel.cs" />
-    <Compile Include="Views\CreateCode\Builder\BuilderModel2.cs" />
-    <Compile Include="Views\CreateCode\Builder\MVC\BuilderBLL.cs" />
-    <Compile Include="Views\CreateCode\Builder\MVC\BuilderDAL.cs" />
-    <Compile Include="Views\CreateCode\Builder\MVC\BuilderIBLL.cs" />
-    <Compile Include="Views\CreateCode\Builder\MVC\BuilderIDAL.cs" />
-    <Compile Include="Views\CreateCode\Builder\MVC\BuilderModel.cs" />
-    <Compile Include="Views\CreateCode\Builder\WebPage\BuilderView.cs" />
     <Compile Include="Views\CreateCode\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,7 +151,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\CreateCode\Builder\MVC\" />
+    <Folder Include="Views\CreateCode\Builder\WebPage\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Win.Common\Win.Common.csproj">
       <Project>{745807EF-101B-4D39-823E-1C6D9D3CB2F5}</Project>

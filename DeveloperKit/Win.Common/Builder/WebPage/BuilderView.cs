@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Win.Models;
 
-namespace DeveloperKit.Views.CreateCode.Builder.WebPage
+namespace Win.Common.Builder.WebPage
 {
     public class BuilderView
     {
