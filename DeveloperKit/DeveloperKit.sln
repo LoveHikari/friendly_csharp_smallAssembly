@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.DAL", "Win.DAL\Win.DAL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.Common", "Win.Common\Win.Common.csproj", "{745807EF-101B-4D39-823E-1C6D9D3CB2F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostSharp.KeyMaker", "PostSharp.KeyMaker\PostSharp.KeyMaker.csproj", "{A2D2A7D6-F487-472C-8C84-B210F21C2BCA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,10 +33,6 @@ Global
 		{745807EF-101B-4D39-823E-1C6D9D3CB2F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{745807EF-101B-4D39-823E-1C6D9D3CB2F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{745807EF-101B-4D39-823E-1C6D9D3CB2F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2D2A7D6-F487-472C-8C84-B210F21C2BCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2D2A7D6-F487-472C-8C84-B210F21C2BCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2D2A7D6-F487-472C-8C84-B210F21C2BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2D2A7D6-F487-472C-8C84-B210F21C2BCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

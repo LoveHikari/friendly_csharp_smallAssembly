@@ -166,7 +166,7 @@ namespace Win.Common.Builder.MVC
                     }
                     strclass.AppendSpaceLine(2, $"[DefaultValue(" + defValue + ")]");
                 }
-                if (isnull == "")
+                if (!field.IsCanNull)
                 {
                     strclass.AppendSpaceLine(2, "[Required(ErrorMessage = \"必填\",AllowEmptyStrings = true)]");
                 }

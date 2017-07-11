@@ -95,7 +95,7 @@ namespace Win.Common.Builder
             {
                 _identityKey = key.ColumnName;
                 _identityKeyType = key.TypeName;
-                if (key.IsIdentity)
+                if (key.IsIdentity || key.IsPrimaryKey)
                 {
                     _identityKey = key.ColumnName;
                     _identityKeyType = System.CodeCommon.DbTypeToCS(key.TypeName);

@@ -21,7 +21,7 @@ namespace Win.Common
     public class CodeCommon:System.CodeCommon
     {
         /// <summary>
-        /// 获得主键列表
+        /// 获得主键或标识列列表
         /// </summary>
         /// <param name="fieldlist"></param>
         public static List<ColumnModel> GetPrimaryKeyList(List<ColumnModel> fieldlist)
@@ -29,7 +29,7 @@ namespace Win.Common
             List<ColumnModel> keyList = new List<ColumnModel>();
             foreach (ColumnModel field in fieldlist)
             {
-                if (field.IsPrimaryKey)
+                if (field.IsPrimaryKey || field.IsIdentity)
                 {
                     keyList.Add(field);
                 }
@@ -40,14 +40,14 @@ namespace Win.Common
         /// <summary>
         /// 主键列表中是否有标识列
         /// </summary>
-        /// <param name="Keys"></param>
+        /// <param name="keys"></param>
         /// <returns></returns>
-        public static bool IsHasIdentity(List<ColumnModel> Keys)
+        public static bool IsHasIdentity(List<ColumnModel> keys)
         {
             bool flag = false;
-            if (Keys.Count > 0)
+            if (keys.Count > 0)
             {
-                foreach (ColumnModel key in Keys)
+                foreach (ColumnModel key in keys)
                 {
                     if (key.IsIdentity)
                         flag = true;

@@ -43,14 +43,14 @@ namespace DeveloperKit.Views.CreateCode
                 return _namespaceConfig;
             }
         }
-        private Hashtable _databaseInfo;
-        public Hashtable DatabaseInfo
+        private SortedList _databaseInfo;
+        public SortedList DatabaseInfo
         {
             get
             {
                 if (_databaseInfo == null)
                 {
-                    _databaseInfo = new Hashtable();
+                    _databaseInfo = new SortedList();
                     DataTable dt = Win.DAL.BLL.SqlServerBll.Instance.GetAllTable();
                     foreach (DataRow dr in dt.Rows)
                     {
@@ -452,14 +452,14 @@ namespace DeveloperKit.Views.CreateCode
             System.Serialization.BinaryFormatterHelper.SerilizeToFile(DatabaseInfo,System.IO.Path.Combine(System.Environment.CurrentDirectory,"App_Data\\TempData","database.dat"));
         }
 
-        private Hashtable GetDatabaseInfo()
+        private SortedList GetDatabaseInfo()
         {
-            return System.Serialization.BinaryFormatterHelper.DeserializeForFile<Hashtable>(System.IO.Path.Combine(System.Environment.CurrentDirectory, "App_Data\\TempData", "database.dat"));
+            return System.Serialization.BinaryFormatterHelper.DeserializeForFile<SortedList>(System.IO.Path.Combine(System.Environment.CurrentDirectory, "App_Data\\TempData", "database.dat"));
         }
 
         private void Write()
         {
-            Hashtable hashtable = GetDatabaseInfo();
+            SortedList hashtable = GetDatabaseInfo();
             foreach (string key in hashtable.Keys)
             {
                 //生成实体类
