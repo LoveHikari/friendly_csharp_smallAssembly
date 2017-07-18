@@ -338,7 +338,7 @@ namespace Win.Common.Builder
                     continue;  //如果是自增列，则跳过
                 }
 
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Length}),");
             }
             strclass2.DelLastChar(",");
             strclass2.AppendSpaceLine(4, "});");
@@ -431,13 +431,13 @@ namespace Win.Common.Builder
                     continue;
                 }
                 strclass.AppendSpaceLine(3, "strSql.Append(\"" + field.ColumnName + "=" + _preParameter + field.ColumnName + ",\");");
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Precision}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)},{field.Length}),");
 
             }
 
             foreach (ColumnModel field in fieldpk)
             {
-                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)}{(field.Precision == 0 ? "" : ", " + field.Precision)}),");
+                strclass2.AppendSpaceLine(5, $"new DBParam(\"{_preParameter + field.ColumnName}\",model.{field.ColumnName.ToFirstUpper()}, DbType.{Win.Common.CodeCommon.SqlTypeToDbType(field.TypeName)}{(field.Length == 0 ? "" : ", " + field.Length)}),");
             }
 
             if (strclass2.Length > 0)
